@@ -169,3 +169,5 @@ raw-data/fuzzer/testnetdata
 raw-data/fuzzer/testnetdata-*
 raw-data/trx_fuzz_tools
 *.tar.gz
+RQ2/mbt_rand_trial-*.tar.gz
+RQ2/cov_seq.csv.mbt_rand_trial-*.tar.gz
