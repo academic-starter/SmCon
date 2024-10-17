@@ -161,3 +161,11 @@ cython_debug/
 
 # do not include json files as they are too large
 *.json 
+*.zip
+
+raw-data/trx_fuzz_tools/data/csv
+raw-data/trx_fuzz_tools/data/data
+raw-data/fuzzer/testnetdata
+raw-data/fuzzer/testnetdata-*
+raw-data/trx_fuzz_tools
+*.tar.gz
