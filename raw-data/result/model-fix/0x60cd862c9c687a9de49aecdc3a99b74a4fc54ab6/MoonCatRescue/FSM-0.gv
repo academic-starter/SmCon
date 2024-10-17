@@ -1,0 +1,17 @@
+digraph "Dapp-Automata-data/result/model-fix/0x60cd862c9c687a9de49aecdc3a99b74a4fc54ab6/MoonCatRescue/FSM-0" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	0 [label=0 shape=circle]
+	1 [label=1 shape=circle]
+	"" -> 0 [label=""]
+	0 -> 1 [label=rescueCat]
+	0 -> 1 [label=addGenesisCatGroup]
+	1 -> 1 [label=nameCat]
+	1 -> 1 [label=makeAdoptionOffer]
+	1 -> 1 [label=cancelAdoptionOffer]
+	1 -> 1 [label=acceptAdoptionOffer]
+	1 -> 1 [label=giveCat]
+	1 -> 1 [label=makeAdoptionRequest]
+	1 -> 1 [label=acceptAdoptionRequest]
+	1 -> 1 [label=cancelAdoptionRequest]
+}

@@ -1,0 +1,50 @@
+{
+    "transfer@_tokenId": [
+        "tokenApprovals_address == 0",
+        "tokenCurrentBid_uint256 one of [0,80000000000000000,90000000000000000,100000000000000000,75000000000000000]",
+        "tokenSalePrice_uint256 one of [0,700000000000000000,1000000000000000000,200000000000000000,10000000000000000000,300000000000000000,500000000000000000,250000000000000000]"
+    ],
+    "addNewToken@uriOriginalToken[_uri]": [
+        "tokenCurrentBid_uint256 == 0",
+        "tokenCurrentBid_uint256 one of [0]",
+        "tokenOwner_address == 0",
+        "tokenSalePrice_uint256 one of [0]",
+        "tokenSalePrice_uint256 == 0",
+        "tokenApprovals_address == 0",
+        "tokenCreator_address == 0",
+        "tokenBidder_address == 0"
+    ],
+    "addNewTokenWithEditions@uriOriginalToken[_uri]": [
+        "tokenCurrentBid_uint256 == 0",
+        "tokenCurrentBid_uint256 one of [0]",
+        "tokenOwner_address == 0",
+        "tokenSalePrice_uint256 one of [0]",
+        "tokenSalePrice_uint256 == 0",
+        "tokenApprovals_address == 0",
+        "tokenCreator_address == 0",
+        "tokenBidder_address == 0"
+    ],
+    "bid@_tokenId": [
+        "tokenApprovals_address == 0"
+    ],
+    "acceptBid@_tokenId": [
+        "tokenCurrentBid_uint256 > 0",
+        "tokenBidder_address != 0",
+        "tokenOwner_address != 0",
+        "tokenApprovals_address == 0",
+        "tokenCreator_address != 0"
+    ],
+    "cancelBid@_tokenId": [
+        "tokenApprovals_address == 0",
+        "tokenCurrentBid_uint256 > 0",
+        "tokenSalePrice_uint256 one of [0,1000000000000000000,700000000000000000,2300000000000000000,2000000000000000000,250000000000000000,300000000000000000,1500000000000000000,1800000000000000000]",
+        "tokenBidder_address != 0"
+    ],
+    "buy@_tokenId": [
+        "tokenApprovals_address == 0",
+        "tokenCurrentBid_uint256 one of [0,5000000000000000,50000000000000000,380000000000000000,150000000000000000,12000000000000000]"
+    ],
+    "setSalePrice@_tokenId": [
+        "tokenApprovals_address == 0"
+    ]
+}

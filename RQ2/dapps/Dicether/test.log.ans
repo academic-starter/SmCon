@@ -1,0 +1,389 @@
+
+> contracts@1.0.0 test ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts
+> run-s build mocha
+
+
+> contracts@1.0.0 build ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts
+> tsc
+
+
+> contracts@1.0.0 mocha ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts
+>  truffle test --network test ./lib/test/**/*.js ./lib/test/*.js
+
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module './uws_linux_x64_64.node'
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+Using network 'test'.
+
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+[0m[0m
+[0m  Contract: GameChannelConflict[0m
+[0m    serverCancelActiveGame[0m
+    [31m  1) "before each" hook for "Should fail if wrong gameId"[0m
+[0m    userCancelActiveGame[0m
+    [31m  2) "before each" hook for "Should fail if wrong gameId"[0m
+
+[0m  Contract: GameChannelConflict[0m
+[0m    serverEndConflict[0m
+    [31m  3) "before each" hook for "Should succeed"[0m
+[0m    userEndConflict[0m
+    [31m  4) "before each" hook for "Should succeed after server called cancelActiveGame!"[0m
+
+[0m  Contract: GameChannelConflict-ForceEnd[0m
+[0m    serverForceGameEnd[0m
+    [31m  5) "before each" hook for "Should fail if time span too low"[0m
+[0m    userForceGameEnd[0m
+    [31m  6) "before each" hook for "Should fail if time span too low"[0m
+
+[0m  Contract: Activatable[0m
+[0m    activate[0m
+    [32m  ✓[0m[90m Should initial not be activated[0m
+    [32m  ✓[0m[90m Should fail if non owner calls activate[0m[33m (69ms)[0m
+    [32m  ✓[0m[90m Should succeed[0m[31m (77ms)[0m
+
+[0m  Contract: ConflictResolutionManager[0m
+[0m    update ConflictResolution[0m
+    [32m  ✓[0m[90m Should fail if non owner updates conflict resolution contract[0m[33m (54ms)[0m
+    [32m  ✓[0m[90m New conflict resolution address should be settable by owner[0m[31m (83ms)[0m
+[0m    activate ConflictResolution[0m
+    [32m  ✓[0m[90m Should fail if owner activates before min timeout[0m[31m (126ms)[0m
+    [32m  ✓[0m[90m Should fail if non owner activates after min timeout[0m[31m (123ms)[0m
+    [32m  ✓[0m[90m Should fail if owner activates after max timeout[0m[31m (103ms)[0m
+    [32m  ✓[0m[90m New conflict resolution address can be activated by owner[0m[31m (110ms)[0m
+
+[0m  Contract: Destroyable[0m
+[0m    destroy[0m
+    [32m  ✓[0m[90m Should fail if owner calls not paused[0m[31m (146ms)[0m
+    [32m  ✓[0m[90m Should fail if owner calls paused with wrong timeout[0m[31m (202ms)[0m
+    [32m  ✓[0m[90m Should fail if non owner calls with correct timeout[0m[31m (184ms)[0m
+    [32m  ✓[0m[90m Should succeed of owner call with correct timeout[0m[31m (207ms)[0m
+
+[0m  Contract: GameChannel[0m
+[0m    createGame[0m
+    [32m  ✓[0m[90m Should fail if house stake too low[0m[31m (131ms)[0m
+    [32m  ✓[0m[90m Should fail if value too low[0m[31m (88ms)[0m
+    [32m  ✓[0m[90m Should fail if value too high[0m[31m (90ms)[0m
+    [32m  ✓[0m[90m Should fail if game paused[0m[31m (141ms)[0m
+    [31m  7) Should fail if game not ended[0m
+    > No events were emitted
+    [32m  ✓[0m[90m Should fail if invalid signature[0m[31m (139ms)[0m
+    [32m  ✓[0m[90m Should fail if invalid create time[0m[31m (90ms)[0m
+    [32m  ✓[0m[90m Should fail if invalid  game id[0m[31m (83ms)[0m
+    [31m  8) Create game should succeed[0m
+    > No events were emitted
+[0m    serverEndGame[0m
+    [31m  9) "before each" hook for "Should fail if invalid game id"[0m
+[0m    userEndGame[0m
+    [31m  10) "before each" hook for "Should fail if invalid game id"[0m
+
+[0m  Contract: GameChannelBase[0m
+[0m    setGameIdCntr[0m
+    [32m  ✓[0m[90m Should fail if not called by owner[0m[33m (66ms)[0m
+    [32m  ✓[0m[90m Should fail if activated[0m[31m (99ms)[0m
+    [32m  ✓[0m[90m Should succeed[0m[33m (64ms)[0m
+[0m    activated contract tests[0m
+[0m      transferProfitToHouse[0m
+      [31m  11) Should fail if wrong timeout 1![0m
+    > No events were emitted
+      [31m  12) Should fail if wrong timeout 2![0m
+    > No events were emitted
+      [31m  13) Should transfer nothing if negative profit[0m
+    > No events were emitted
+      [31m  14) Should succeed![0m
+    > No events were emitted
+[0m      setProfitTransferTimespan[0m
+      [32m  ✓[0m[90m Should fail if not owner[0m[33m (53ms)[0m
+      [32m  ✓[0m[90m Should fail if too low time span[0m[33m (53ms)[0m
+      [32m  ✓[0m[90m Should fail if too high time span[0m[33m (52ms)[0m
+      [32m  ✓[0m[90m Should succeed![0m[33m (61ms)[0m
+[0m      withdrawHouseStake[0m
+      [32m  ✓[0m[90m Should fail if not owner[0m[33m (47ms)[0m
+      [31m  15) Should fail if below min house stake[0m
+    > No events were emitted
+      [31m  16) Should fail if house profit not backed[0m
+    > No events were emitted
+      [32m  ✓[0m[90m Should succeed[0m[31m (86ms)[0m
+[0m      withdrawAll[0m
+      [32m  ✓[0m[90m Should fail if not owner[0m[31m (111ms)[0m
+      [32m  ✓[0m[90m Should fail if not paused long enough[0m[31m (106ms)[0m
+      [32m  ✓[0m[90m Should succeed[0m[31m (160ms)[0m
+[0m      setHouseAddress[0m
+      [32m  ✓[0m[90m Should fail if not owner[0m[33m (57ms)[0m
+      [32m  ✓[0m[90m Should succeed[0m[33m (62ms)[0m
+[0m      setStakeRequirements[0m
+      [32m  ✓[0m[90m Should fail if not owner[0m[33m (49ms)[0m
+      [32m  ✓[0m[90m Should succeed[0m[31m (79ms)[0m
+[0m      addHouseStake[0m
+      [32m  ✓[0m[90m Should fail if not owner[0m[33m (57ms)[0m
+      [32m  ✓[0m[90m Should succeed[0m[33m (71ms)[0m
+
+[0m  Contract: MathUtilMock[0m
+  [32m  ✓[0m[90m max[0m
+  [32m  ✓[0m[90m min[0m
+[0m    abs[0m
+    [32m  ✓[0m[90m Should work for positive number[0m
+    [32m  ✓[0m[90m Should work for negative number[0m
+    [32m  ✓[0m[90m Should work for -MAX_INT[0m
+
+[0m  Contract: Ownable[0m
+  [32m  ✓[0m[90m Initial owner should be set[0m
+  [32m  ✓[0m[90m Initial pending owner should be set to 0 [0m
+  [32m  ✓[0m[90m Should fail if non owner sets new pending owner[0m[33m (58ms)[0m
+  [32m  ✓[0m[90m New pending owner should be settable by owner[0m[31m (131ms)[0m
+  [32m  ✓[0m[90m Non pending owner should not be able to claim ownership[0m[31m (114ms)[0m
+  [32m  ✓[0m[90m Pending owner should be able to claim ownership[0m[31m (164ms)[0m
+
+[0m  Contract: Pausable[0m
+[0m    pause[0m
+    [32m  ✓[0m[90m Should fail if non owner calls pause[0m[31m (238ms)[0m
+    [32m  ✓[0m[90m Should pause contract[0m[31m (174ms)[0m
+[0m    unpause[0m
+    [32m  ✓[0m[90m Should fail if non owner calls unpause[0m[31m (112ms)[0m
+    [32m  ✓[0m[90m Should fail if non activated[0m[33m (59ms)[0m
+    [32m  ✓[0m[90m Should unpause contract[0m[31m (137ms)[0m
+
+[0m  Contract: SafeCast[0m
+[0m    castToInt[0m
+    [32m  ✓[0m[90m casts correctly[0m
+    [32m  ✓[0m[90m throws an error if to large[0m
+[0m    castToUint[0m
+    [32m  ✓[0m[90m casts correctly[0m
+    [32m  ✓[0m[90m throws an error if negative[0m
+
+[0m  Contract: SafeMath[0m
+[0m    unsigned integers[0m
+[0m      add[0m
+      [32m  ✓[0m[90m adds correctly[0m[33m (45ms)[0m
+      [32m  ✓[0m[90m throws an error on addition overflow[0m
+[0m      sub[0m
+      [32m  ✓[0m[90m subtracts correctly[0m
+      [32m  ✓[0m[90m throws an error if subtraction result would be negative[0m
+[0m      mul[0m
+      [32m  ✓[0m[90m multiplies correctly[0m
+      [32m  ✓[0m[90m handles a zero product correctly[0m[33m (38ms)[0m
+      [32m  ✓[0m[90m throws an error on multiplication overflow[0m
+[0m      div[0m
+      [32m  ✓[0m[90m divides correctly[0m
+      [32m  ✓[0m[90m throws an error on zero division[0m
+[0m    signed integers[0m
+[0m      add[0m
+      [32m  ✓[0m[90m adds correctly if it does not overflow and the result is positve[0m
+      [32m  ✓[0m[90m adds correctly if it does not overflow and the result is negative[0m
+      [32m  ✓[0m[90m throws an error on positive addition overflow[0m
+      [32m  ✓[0m[90m throws an error on negative addition overflow[0m
+[0m      sub[0m
+      [32m  ✓[0m[90m subtracts correctly if it does not overflow and the result is positive[0m
+      [32m  ✓[0m[90m subtracts correctly if it does not overflow and the result is negative[0m
+      [32m  ✓[0m[90m throws an error on positive subtraction overflow[0m
+      [32m  ✓[0m[90m throws an error on negative subtraction overflow[0m
+[0m      mul[0m
+      [32m  ✓[0m[90m multiplies correctly[0m
+      [32m  ✓[0m[90m handles a zero product correctly[0m
+      [32m  ✓[0m[90m throws an error on multiplication overflow, positive operands[0m
+      [32m  ✓[0m[90m throws an error on multiplication overflow, negative operands[0m
+[0m      div[0m
+      [32m  ✓[0m[90m divides correctly[0m
+      [32m  ✓[0m[90m throws an error on zero division[0m
+      [32m  ✓[0m[90m throws an error on overflow, negative second[0m
+
+
+[92m [0m[32m 82 passing[0m[90m (16s)[0m
+[31m  16 failing[0m
+
+[0m  1) Contract: GameChannelConflict
+       serverCancelActiveGame
+         "before each" hook for "Should fail if wrong gameId":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  2) Contract: GameChannelConflict
+       userCancelActiveGame
+         "before each" hook for "Should fail if wrong gameId":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  3) Contract: GameChannelConflict
+       serverEndConflict
+         "before each" hook for "Should succeed":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  4) Contract: GameChannelConflict
+       userEndConflict
+         "before each" hook for "Should succeed after server called cancelActiveGame!":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  5) Contract: GameChannelConflict-ForceEnd
+       serverForceGameEnd
+         "before each" hook for "Should fail if time span too low":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  6) Contract: GameChannelConflict-ForceEnd
+       userForceGameEnd
+         "before each" hook for "Should fail if time span too low":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  7) Contract: GameChannel
+       createGame
+         Should fail if game not ended:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  8) Contract: GameChannel
+       createGame
+         Create game should succeed:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  9) Contract: GameChannel
+       serverEndGame
+         "before each" hook for "Should fail if invalid game id":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  10) Contract: GameChannel
+       userEndGame
+         "before each" hook for "Should fail if invalid game id":
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  11) Contract: GameChannelBase
+       activated contract tests
+         transferProfitToHouse
+           Should fail if wrong timeout 1!:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  12) Contract: GameChannelBase
+       activated contract tests
+         transferProfitToHouse
+           Should fail if wrong timeout 2!:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  13) Contract: GameChannelBase
+       activated contract tests
+         transferProfitToHouse
+           Should transfer nothing if negative profit:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  14) Contract: GameChannelBase
+       activated contract tests
+         transferProfitToHouse
+           Should succeed!:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  15) Contract: GameChannelBase
+       activated contract tests
+         withdrawHouseStake
+           Should fail if below min house stake:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+[0m  16) Contract: GameChannelBase
+       activated contract tests
+         withdrawHouseStake
+           Should fail if house profit not backed:
+[0m[31m     Error: Returned error: VM Exception while processing transaction: revert inv sig -- Reason given: inv sig.[0m[90m
+      at ./InvConPlus/Dapp-Automata-data/RQ2/dapps/Dicether/contracts/lib/test/utils/util.js:122:52
+      at step (lib/test/utils/util.js:56:23)
+      at Object.next (lib/test/utils/util.js:37:53)
+      at fulfilled (lib/test/utils/util.js:28:58)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+
+
+npm ERR! code ELIFECYCLE
+npm ERR! errno 16
+npm ERR! contracts@1.0.0 mocha: ` truffle test --network test ./lib/test/**/*.js ./lib/test/*.js`
+npm ERR! Exit status 16
+npm ERR! 
+npm ERR! Failed at the contracts@1.0.0 mocha script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     .npm/_logs/2023-12-23T06_39_53_140Z-debug.log
+ERROR: "mocha" exited with 16.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! contracts@1.0.0 test: `run-s build mocha`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the contracts@1.0.0 test script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     .npm/_logs/2023-12-23T06_39_53_176Z-debug.log

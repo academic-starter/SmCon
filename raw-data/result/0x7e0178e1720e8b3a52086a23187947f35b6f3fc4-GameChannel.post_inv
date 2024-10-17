@@ -1,0 +1,64 @@
+{
+    "createGame@userGameId[msg.sender]": [
+        "gameIdGame_endInitiatedTime == 0",
+        "gameIdGame_stake > 0",
+        "gameIdGame_gameType == 0",
+        "gameIdGame_betValue == 0",
+        "gameIdGame_betNum == 0",
+        "gameIdGame_userSeed == \"\"",
+        "gameIdGame_serverSeed == \"\"",
+        "gameIdGame_roundId == 0",
+        "gameIdGame_status == 1",
+        "gameIdGame_balance == 0"
+    ],
+    "serverEndGame@userGameId[_userAddress]": [
+        "gameIdGame_endInitiatedTime == 0",
+        "gameIdGame_stake > 0",
+        "gameIdGame_gameType == 0",
+        "gameIdGame_betValue == 0",
+        "gameIdGame_betNum == 0",
+        "gameIdGame_userSeed == \"\"",
+        "gameIdGame_serverSeed == \"\"",
+        "gameIdGame_roundId == 0",
+        "gameIdGame_balance == 0",
+        "gameIdGame_status == 0"
+    ],
+    "userCancelActiveGame@userGameId[msg.sender]": [
+        "gameIdGame_stake > 0",
+        "gameIdGame_gameType == 0",
+        "gameIdGame_betValue == 0",
+        "gameIdGame_betNum == 0",
+        "gameIdGame_endInitiatedTime > 0",
+        "gameIdGame_serverSeed == \"\"",
+        "gameIdGame_userSeed == \"\"",
+        "gameIdGame_roundId == 0",
+        "gameIdGame_balance == 0"
+    ],
+    "serverCancelActiveGame@userGameId[_userAddress]": [
+        "gameIdGame_stake > 0",
+        "gameIdGame_gameType == 0",
+        "gameIdGame_betValue == 0",
+        "gameIdGame_betNum == 0",
+        "gameIdGame_endInitiatedTime > 0",
+        "gameIdGame_serverSeed == \"\"",
+        "gameIdGame_userSeed == \"\"",
+        "gameIdGame_roundId == 0",
+        "gameIdGame_balance == 0"
+    ],
+    "serverForceGameEnd@userGameId[_userAddress]": [
+        "gameIdGame_stake > 0",
+        "gameIdGame_endInitiatedTime > 0",
+        "gameIdGame_status == 0"
+    ],
+    "serverEndGameConflict@userGameId[_userAddress]": [
+        "gameIdGame_betValue > 0",
+        "gameIdGame_stake > 0",
+        "gameIdGame_status == 3",
+        "gameIdGame_endInitiatedTime > 0",
+        "gameIdGame_balance > 0",
+        "gameIdGame_serverSeed != \"\"",
+        "gameIdGame_gameType > 0",
+        "gameIdGame_roundId > 0",
+        "gameIdGame_userSeed != \"\""
+    ]
+}

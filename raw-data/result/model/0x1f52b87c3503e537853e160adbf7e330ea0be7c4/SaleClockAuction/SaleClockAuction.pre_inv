@@ -1,0 +1,7 @@
+{
+    "createAuction@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_duration one of [0,777600,604800,2592000,86400,3024000,31536000]"
+    ],
+    "bid@_nftAddress@_tokenId": [],
+    "cancelAuction@_nftAddress@_tokenId": []
+}

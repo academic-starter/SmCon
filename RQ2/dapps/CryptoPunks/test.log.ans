@@ -1,0 +1,513 @@
+Using network 'development'.
+
+
+[0m[0m
+[0m  Contract: CryptoPunksMarket-bid[0m
+  [31m  1) attempt to bid on an unclaimed to punk[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    Assign(to: <indexed>, punkIndex: 0)
+    Assign(to: <indexed>, punkIndex: 1)
+
+    ---------------------------
+  [31m  2) attempt to bid on your own punk[0m
+    > No events were emitted
+  [31m  3) attempt to bid with zero value[0m
+    > No events were emitted
+Comparing only least significant digits: 0000000000 vs. 9999999000
+  [31m  4) do a real bid[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkBidEntered(punkIndex: <indexed>, value: 1000, fromAddress: <indexed>)
+
+    ---------------------------
+  [31m  5) wrong address tries to cancel bid[0m
+    > No events were emitted
+Comparing only least significant digits: 9999999000 vs. 0000000000
+  [31m  6) cancel bid[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkBidWithdrawn(punkIndex: <indexed>, value: 1000, fromAddress: <indexed>)
+
+    ---------------------------
+Comparing only least significant digits: 0000000000 vs. 9999998000
+  [31m  7) do another real bid[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkBidEntered(punkIndex: <indexed>, value: 2000, fromAddress: <indexed>)
+
+    ---------------------------
+  [31m  8) bid underneath an existing bid[0m
+    > No events were emitted
+Comparing only least significant digits: 0000000000 vs. 9999997000
+  [31m  9) outbid[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkBidEntered(punkIndex: <indexed>, value: 3000, fromAddress: <indexed>)
+
+    ---------------------------
+  [31m  10) wrong owner tries to accept bid[0m
+    > No events were emitted
+  [31m  11) try to accept bid for a punk that has no bid[0m
+    > No events were emitted
+  [31m  12) try to accept bid for a punk with too high an accept value[0m
+    > No events were emitted
+Current owner: 0xa8d5f39f3ccd4795b0e38feacb4f2ee22486ca44
+Bid: true,1,0x3596ddf5181c9f6aa1bce87d967bf227dde70ddf,3000
+Bid accepted
+  [32m  ✓[0m[90m accept bid from A2[0m[31m (292ms)[0m
+  [31m  13) offer up a punk for sale, then get a lower bid, accept that bid[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkOffered(punkIndex: <indexed>, minValue: 9000, toAddress: <indexed>)
+    PunkBidEntered(punkIndex: <indexed>, value: 5000, fromAddress: <indexed>)
+    Transfer(from: <indexed>, to: <indexed>, value: 1)
+    PunkBought(punkIndex: <indexed>, value: 0, fromAddress: <indexed>, toAddress: <indexed>)
+
+    ---------------------------
+
+[0m  Contract: CryptoPunksMarket-edgecases[0m
+  [32m  ✓[0m[90m re-assign a punk during assignment phase, assign same punk twice[0m[31m (248ms)[0m
+Comparing only least significant digits: 0000000000 vs. 9999992000
+  [31m  14) place a bid, then transfer the punk, then new owner accepts bid[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    Assign(to: <indexed>, punkIndex: 1001)
+    Assign(to: <indexed>, punkIndex: 1002)
+    Assign(to: <indexed>, punkIndex: 1003)
+    PunkBidEntered(punkIndex: <indexed>, value: 8000, fromAddress: <indexed>)
+    Transfer(from: <indexed>, to: <indexed>, value: 1)
+    PunkTransfer(from: <indexed>, to: <indexed>, punkIndex: 1001)
+    Transfer(from: <indexed>, to: <indexed>, value: 1)
+    PunkBought(punkIndex: <indexed>, value: 0, fromAddress: <indexed>, toAddress: <indexed>)
+
+    ---------------------------
+Comparing only least significant digits: 1e+21 vs. 9999991000
+  [31m  15) place a bid, then owner offers for sale, somebody accepts that offer[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkBidEntered(punkIndex: <indexed>, value: 7000, fromAddress: <indexed>)
+    PunkOffered(punkIndex: <indexed>, minValue: 9000, toAddress: <indexed>)
+    Transfer(from: <indexed>, to: <indexed>, value: 1)
+    PunkNoLongerForSale(punkIndex: <indexed>)
+    PunkBought(punkIndex: <indexed>, value: 9000, fromAddress: <indexed>, toAddress: <indexed>)
+
+    ---------------------------
+About to enter bid
+Enter bid
+Offer for sale
+Buy punk
+Comparing only least significant digits: 1e+21 vs. 9999971000
+  [31m  16) place a bid, then owner offers for sale, then bidder accepts that offer[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkBidEntered(punkIndex: <indexed>, value: 14000, fromAddress: <indexed>)
+    PunkOffered(punkIndex: <indexed>, minValue: 15000, toAddress: <indexed>)
+    Transfer(from: <indexed>, to: <indexed>, value: 1)
+    PunkNoLongerForSale(punkIndex: <indexed>)
+    PunkBought(punkIndex: <indexed>, value: 15000, fromAddress: <indexed>, toAddress: <indexed>)
+
+    ---------------------------
+  [32m  ✓[0m[90m place a bid, then owner transfers punk to bidder[0m[31m (270ms)[0m
+
+[0m  Contract: CryptoPunksMarket-fullRun[0m
+  [32m  ✓[0m[90m should have 10000 punks available to assign[0m
+  [31m  17) should be able to complete the full buy and sell cycle[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    Assign(to: <indexed>, punkIndex: 0)
+    Assign(to: <indexed>, punkIndex: 1)
+    Assign(to: <indexed>, punkIndex: 2)
+
+    ---------------------------
+  [31m  18) should not be able to send bad number to setInitialOwner[0m
+    > No events were emitted
+  [32m  ✓[0m[90m only owner can call setInitialOwner[0m
+
+[0m  Contract: CryptoPunksMarket-getPunk[0m
+Pre Balance: 0
+All assigned: false
+  [31m  19) can not get punks while allPunksAssigned = false[0m
+    > No events were emitted
+Balance: 1
+  [32m  ✓[0m[90m can get a punk but no one else can get it after[0m[31m (182ms)[0m
+
+[0m  Contract: CryptoPunksMarket-setInitial[0m
+  [32m  ✓[0m[90m Should start with 0 balance[0m[31m (5064ms)[0m
+  [32m  ✓[0m[90m bulk assign[0m[31m (358ms)[0m
+  [32m  ✓[0m[90m can not pass an invalid index to assign initial[0m
+  [32m  ✓[0m[90m only owner can assign initial[0m[33m (49ms)[0m
+  [32m  ✓[0m[90m Can not claim punk after set initial owners assigned[0m[33m (49ms)[0m
+
+[0m  Contract: CryptoPunksMarket-buySellRemoveFromSale[0m
+  [31m  20) can not offer for sale allPunksAssigned = false[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    Assign(to: <indexed>, punkIndex: 0)
+
+    ---------------------------
+Offer: true,0,0x26006236eab6409d9fdecb16ed841033d6b4a6bc,1000,0x0000000000000000000000000000000000000000
+  [32m  ✓[0m[90m can offer a punk[0m[31m (182ms)[0m
+  [31m  21) can not buy a punk that is not for sale[0m
+    > No events were emitted
+Account 1 has 1e+21 Wei
+  [31m  22) can not buy a punk for too little money[0m
+    > No events were emitted
+  [31m  23) can not offer a punk with an invalid index[0m
+    > No events were emitted
+  [31m  24) can not buy a punk with an invalid index[0m
+    > No events were emitted
+Offer post purchase: false,0,0xa8d5f39f3ccd4795b0e38feacb4f2ee22486ca44,0,0x0000000000000000000000000000000000000000
+  [32m  ✓[0m[90m can buy a punk that is for sale[0m[31m (123ms)[0m
+Comparing only least significant digits: 00000000 vs. 00001000
+  [32m  ✓[0m[90m can withdraw money from sale[0m[31m (275ms)[0m
+Offer: true,1,0xa8d5f39f3ccd4795b0e38feacb4f2ee22486ca44,1333,0x0000000000000000000000000000000000000000
+Offer: true,1,0xa8d5f39f3ccd4795b0e38feacb4f2ee22486ca44,1333,0x0000000000000000000000000000000000000000
+  [31m  25) can offer for sale then withdraw[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkOffered(punkIndex: <indexed>, minValue: 1333, toAddress: <indexed>)
+    PunkNoLongerForSale(punkIndex: <indexed>)
+
+    ---------------------------
+Offer: true,1,0xa8d5f39f3ccd4795b0e38feacb4f2ee22486ca44,1333,0x26006236eab6409d9fdecb16ed841033d6b4a6bc
+  [31m  26) can offer for sale to specific account[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    PunkOffered(punkIndex: <indexed>, minValue: 1333, toAddress: <indexed>)
+
+    ---------------------------
+Comparing only least significant digits: 99999000 vs. 99999000
+  [31m  27) can withdraw money from sale to specific account[0m
+    > No events were emitted
+  [31m  28) transfer should cancel offers[0m
+    > No events were emitted
+
+[0m  Contract: CryptoPunksMarket-transferPunk[0m
+  [31m  29) can not get transfer punk allPunksAssigned = false[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    Assign(to: <indexed>, punkIndex: 0)
+
+    ---------------------------
+  [32m  ✓[0m[90m can transfer a punk to someone else[0m[31m (129ms)[0m
+  [31m  30) can not transfer someone else's punk[0m
+    > No events were emitted
+  [31m  31) can not use invalid punk index[0m
+    > No events were emitted
+
+
+[92m [0m[32m 15 passing[0m[90m (13s)[0m
+[31m  31 failing[0m
+
+[0m  1) Contract: CryptoPunksMarket-bid
+       attempt to bid on an unclaimed to punk:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  2) Contract: CryptoPunksMarket-bid
+       attempt to bid on your own punk:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  3) Contract: CryptoPunksMarket-bid
+       attempt to bid with zero value:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  4) Contract: CryptoPunksMarket-bid
+       do a real bid:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-9999999000[0m
+      [32m+-1000[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-bid.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-bid.js:65:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  5) Contract: CryptoPunksMarket-bid
+       wrong address tries to cancel bid:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  6) Contract: CryptoPunksMarket-bid
+       cancel bid:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-0[0m
+      [32m+10000000000[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-bid.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-bid.js:76:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  7) Contract: CryptoPunksMarket-bid
+       do another real bid:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-9999998000[0m
+      [32m+-2000[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-bid.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-bid.js:86:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  8) Contract: CryptoPunksMarket-bid
+       bid underneath an existing bid:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  9) Contract: CryptoPunksMarket-bid
+       outbid:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-9999997000[0m
+      [32m+-3000[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-bid.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-bid.js:98:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  10) Contract: CryptoPunksMarket-bid
+       wrong owner tries to accept bid:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  11) Contract: CryptoPunksMarket-bid
+       try to accept bid for a punk that has no bid:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  12) Contract: CryptoPunksMarket-bid
+       try to accept bid for a punk with too high an accept value:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-bid.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  13) Contract: CryptoPunksMarket-bid
+       offer up a punk for sale, then get a lower bid, accept that bid:
+[0m[31m     AssertionError: expected 5000 to equal { Object (s, e, ...) }[0m[90m
+      at Context.<anonymous> (test/cryptopunksmarket-bid.js:155:12)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  14) Contract: CryptoPunksMarket-edgecases
+       place a bid, then transfer the punk, then new owner accepts bid:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-9999992000[0m
+      [32m+-8000[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-edgecases.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-edgecases.js:85:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  15) Contract: CryptoPunksMarket-edgecases
+       place a bid, then owner offers for sale, somebody accepts that offer:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-9999991000[0m
+      [32m+1e+21[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-edgecases.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-edgecases.js:123:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  16) Contract: CryptoPunksMarket-edgecases
+       place a bid, then owner offers for sale, then bidder accepts that offer:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-9999971000[0m
+      [32m+1e+21[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-edgecases.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-edgecases.js:169:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  17) Contract: CryptoPunksMarket-fullRun
+       should be able to complete the full buy and sell cycle:
+[0m[31m     AssertionError: Error: VM Exception while processing transaction: revert[0m[90m
+      at test/cryptopunksmarket-fullrun.js:51:21
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  18) Contract: CryptoPunksMarket-fullRun
+       should not be able to send bad number to setInitialOwner:
+[0m[31m     AssertionError: Error: VM Exception while processing transaction: revert[0m[90m
+      at test/cryptopunksmarket-fullrun.js:192:19
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  19) Contract: CryptoPunksMarket-getPunk
+       can not get punks while allPunksAssigned = false:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-getpunk.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  20) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can not offer for sale allPunksAssigned = false:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-sale.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  21) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can not buy a punk that is not for sale:
+[0m[31m     AssertionError: Expected throw, got 'Error: Invalid number of arguments to Solidity function' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-sale.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  22) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can not buy a punk for too little money:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-sale.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  23) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can not offer a punk with an invalid index:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-sale.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  24) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can not buy a punk with an invalid index:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-sale.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  25) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can offer for sale then withdraw:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-sale.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  26) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can offer for sale to specific account:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-sale.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  27) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       can withdraw money from sale to specific account:
+
+      [31mAccount 1 balance incorrect after withdrawal.[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-99999000[0m
+      [32m+100000333[0m
+      [0m[90m
+      at compareBalance (test/cryptopunksmarket-sale.js:34:10)
+      at Context.<anonymous> (test/cryptopunksmarket-sale.js:187:7)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  28) Contract: CryptoPunksMarket-buySellRemoveFromSale
+       transfer should cancel offers:
+[0m[31m     Error: VM Exception while processing transaction: revert[0m[90m
+      at Object.InvalidResponse (.nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/~/web3/lib/web3/errors.js:38:1)
+      at .nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/~/web3/lib/web3/requestmanager.js:86:1
+      at .nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/packages/truffle-provider/wrapper.js:134:1
+      at XMLHttpRequest.request.onreadystatechange (.nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/~/web3/lib/web3/httpprovider.js:128:1)
+      at XMLHttpRequestEventTarget.dispatchEvent (.nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/~/xhr2/lib/xhr2.js:64:1)
+      at XMLHttpRequest._setReadyState (.nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/~/xhr2/lib/xhr2.js:354:1)
+      at XMLHttpRequest._onHttpResponseEnd (.nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/~/xhr2/lib/xhr2.js:509:1)
+      at IncomingMessage.<anonymous> (.nvm/versions/node/v8.17.0/lib/node_modules/truffle/build/webpack:/~/xhr2/lib/xhr2.js:469:1)
+      at endReadableNT (_stream_readable.js:1064:12)
+      at _combinedTickCallback (internal/process/next_tick.js:139:11)
+      at process._tickCallback (internal/process/next_tick.js:181:9)
+[0m
+[0m  29) Contract: CryptoPunksMarket-transferPunk
+       can not get transfer punk allPunksAssigned = false:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-transferpunk.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  30) Contract: CryptoPunksMarket-transferPunk
+       can not transfer someone else's punk:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-transferpunk.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+[0m  31) Contract: CryptoPunksMarket-transferPunk
+       can not use invalid punk index:
+[0m[31m     AssertionError: Expected throw, got 'Error: VM Exception while processing transaction: revert' instead[0m[90m
+      at expectThrow (test/cryptopunksmarket-transferpunk.js:18:5)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:189:7)
+[0m
+
+

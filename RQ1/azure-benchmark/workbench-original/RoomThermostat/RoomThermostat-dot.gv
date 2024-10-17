@@ -1,0 +1,12 @@
+digraph "Dapp-Automata-data/RQ1/azure-benchmark/workbench/RoomThermostat/RoomThermostat-dot" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	0 [label=0 shape=circle]
+	1 [label=1 shape=circle]
+	2 [label=2 shape=circle]
+	"" -> 2 [label=""]
+	0 -> 1 [label=StartThermostat]
+	1 -> 1 [label=SetTargetTemperature]
+	1 -> 1 [label=SetMode]
+	2 -> 0 [label=constructor]
+}

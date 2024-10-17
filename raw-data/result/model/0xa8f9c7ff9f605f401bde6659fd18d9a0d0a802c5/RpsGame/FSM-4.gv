@@ -1,0 +1,16 @@
+digraph "./InvConPlus/Dapp-Automata-data/result/model/0xa8f9c7ff9f605f401bde6659fd18d9a0d0a802c5/RpsGame/FSM-4" {
+	graph [rankdir=LR fontname = "helvetica"]
+	node [fontname = "helvetica"]
+ 	edge [fontname = "helvetica"]
+	"" [label="" shape=plaintext]
+	0 [label=0 shape=circle]
+	1 [label=1 shape=circle]
+	3 [label=3 shape=circle]
+	2 [label=2 shape=circle]
+	"" -> 0 [label=""]
+	0 -> 2 [label=createGame]
+	2 -> 1 [label=joinGame]
+	2 -> 3 [label=close]
+	1 -> 3 [label=reveal]
+	1 -> 3 [label=close]
+}

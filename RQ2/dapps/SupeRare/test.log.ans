@@ -1,0 +1,72 @@
+Using network 'test'.
+
+
+[0m[0m
+[0m  Contract: SupeRare test[0m
+  [32m  ✓[0m[90m should create new token[0m[31m (155ms)[0m
+  [32m  ✓[0m[90m should not create new token if not a creator[0m
+  [32m  ✓[0m[90m should not create new token with existing uri[0m[33m (75ms)[0m
+  [32m  ✓[0m[90m should create new token and 3 editions and setting the sale price[0m[31m (239ms)[0m
+  [32m  ✓[0m[90m should create new token not for sale and 3 editions for sale [0m[31m (164ms)[0m
+  [32m  ✓[0m[90m should not create new token with editions if not a creator[0m
+  [32m  ✓[0m[90m should create a bid on a token[0m[31m (88ms)[0m
+  [32m  ✓[0m[90m should create a bid on a token and balance be reflected in bidder's account[0m[31m (489ms)[0m
+  [32m  ✓[0m[90m should not bid on token if token owner[0m[31m (114ms)[0m
+  [32m  ✓[0m[90m should not bid on token if token has bid greater than proposed bid[0m[31m (99ms)[0m
+  [32m  ✓[0m[90m should accept a bid on a token[0m[31m (181ms)[0m
+  [32m  ✓[0m[90m should not accept bid if not token owner[0m[31m (120ms)[0m
+  [32m  ✓[0m[90m should accept bid and pay out to creator[0m[31m (582ms)[0m
+  [32m  ✓[0m[90m should accept bid and pay out to creator, owner, and maintainer[0m[31m (1157ms)[0m
+  [32m  ✓[0m[90m should cancel a bid on a token[0m[31m (133ms)[0m
+  [32m  ✓[0m[90m should not cancel bid if not current bidder[0m[31m (107ms)[0m
+  [32m  ✓[0m[90m should set sale price on token[0m[31m (100ms)[0m
+  [32m  ✓[0m[90m should set sale price on token with current bid[0m[31m (133ms)[0m
+  [32m  ✓[0m[90m should not set sale price if not token owner[0m[33m (65ms)[0m
+  [32m  ✓[0m[90m should not set sale price if greater bid exists[0m[31m (92ms)[0m
+  [32m  ✓[0m[90m should buy token[0m[31m (170ms)[0m
+  [32m  ✓[0m[90m should not buy a token if the owner[0m[31m (86ms)[0m
+  [32m  ✓[0m[90m should not buy a token if not for sale[0m[31m (83ms)[0m
+  [32m  ✓[0m[90m should not buy a token if not enough money sent[0m[31m (119ms)[0m
+  [32m  ✓[0m[90m should buy a token and current bidder gets money returned[0m[31m (400ms)[0m
+  [32m  ✓[0m[90m should buy a token and pay out creator as first sale[0m[31m (751ms)[0m
+  [32m  ✓[0m[90m should buy a token and pay out appropriate distributions[0m[31m (1246ms)[0m
+  [31m  1) should transfer token and pay out appropriately, no longer first sale[0m
+
+    Events emitted during test:
+    ---------------------------
+
+    Transfer(_from: <indexed>, _to: <indexed>, _tokenId: 32)
+    Approval(_owner: <indexed>, _approved: <indexed>, _tokenId: 32)
+    Transfer(_from: <indexed>, _to: <indexed>, _tokenId: 32)
+    Bid(_bidder: <indexed>, _amount: <indexed>, _tokenId: <indexed>)
+    Approval(_owner: <indexed>, _approved: <indexed>, _tokenId: 32)
+    Transfer(_from: <indexed>, _to: <indexed>, _tokenId: 32)
+    AcceptBid(_bidder: <indexed>, _seller: <indexed>, _amount: 1000000000000000000, _tokenId: <indexed>)
+
+    ---------------------------
+  [32m  ✓[0m[90m should add a creator to the whitelist[0m[33m (61ms)[0m
+  [32m  ✓[0m[90m should set maintainer percentage[0m[33m (46ms)[0m
+  [32m  ✓[0m[90m should not add creators to whitelist if not superare owner[0m
+  [32m  ✓[0m[90m should not set maintainer percentage if not superare owner[0m
+  [32m  ✓[0m[90m should set creator percentage[0m[33m (39ms)[0m
+  [32m  ✓[0m[90m should not set creator percentage if not superare owner[0m
+  [32m  ✓[0m[90m should not approve[0m[33m (42ms)[0m
+
+
+[92m [0m[32m 34 passing[0m[90m (9s)[0m
+[31m  1 failing[0m
+
+[0m  1) Contract: SupeRare test
+       should transfer token and pay out appropriately, no longer first sale:
+
+      [31mtokenOwner was not paid expected amount[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-80333716100000000000[0m
+      [32m+80333716099999990000[0m
+      [0m[90m
+      at Context.it (test/superare.js:684:12)
+      at process._tickCallback (internal/process/next_tick.js:68:7)
+[0m
+
+

@@ -1,0 +1,14 @@
+digraph "Dapp-Automata-data/result/model/0xa8f9c7ff9f605f401bde6659fd18d9a0d0a802c5/RpsGame/FSM-4.gv.dfa" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	2 [label=2 shape=circle]
+	3 [label=3 shape=circle]
+	1 [label=1 shape=circle]
+	0 [label=0 shape=circle]
+	"" -> 0 [label=""]
+	0 -> 3 [label=createGame]
+	1 -> 2 [label=reveal]
+	1 -> 2 [label=close]
+	3 -> 1 [label=joinGame]
+	3 -> 2 [label=close]
+}

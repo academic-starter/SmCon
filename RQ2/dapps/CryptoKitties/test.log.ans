@@ -1,0 +1,190 @@
+
+> cryptokitty@1.0.0 test ./InvConPlus/Dapp-Automata-data/RQ2/dapps/CryptoKitties/cryptokitties-bounty
+> truffle test
+
+Compiling ./contracts/Auction/ClockAuction.sol...
+Compiling ./contracts/Auction/ClockAuctionBase.sol...
+Compiling ./contracts/Auction/SaleClockAuction.sol...
+Compiling ./contracts/Auction/SiringClockAuction.sol...
+Compiling ./contracts/Debuggable.sol...
+Compiling ./contracts/ERC721Draft.sol...
+Compiling ./contracts/ExternalInterfaces/GeneScienceInterface.sol...
+Compiling ./contracts/KittyAccessControl.sol...
+Compiling ./contracts/KittyAuction.sol...
+Compiling ./contracts/KittyBase.sol...
+Compiling ./contracts/KittyBreeding.sol...
+Compiling ./contracts/KittyCore.sol...
+Compiling ./contracts/KittyCoreRinkeby.sol...
+Compiling ./contracts/KittyCoreTest.sol...
+Compiling ./contracts/KittyMinting.sol...
+Compiling ./contracts/KittyOwnership.sol...
+Compiling ./contracts/Migrations.sol...
+Compiling ./test/contracts/GeneScienceMock.sol...
+Compiling ./test/contracts/NonFungibleMock.sol...
+Compiling zeppelin-solidity/contracts/lifecycle/Pausable.sol...
+Compiling zeppelin-solidity/contracts/ownership/Ownable.sol...
+
+Compilation warnings encountered:
+
+zeppelin-solidity/contracts/ownership/Ownable.sol:17:3: Warning: No visibility specified. Defaulting to "public".
+  function Ownable() {
+  ^
+Spanning multiple lines.
+,zeppelin-solidity/contracts/ownership/Ownable.sol:35:3: Warning: No visibility specified. Defaulting to "public".
+  function transferOwnership(address newOwner) onlyOwner {
+  ^
+Spanning multiple lines.
+,zeppelin-solidity/contracts/lifecycle/Pausable.sol:37:3: Warning: No visibility specified. Defaulting to "public".
+  function pause() onlyOwner whenNotPaused returns (bool) {
+  ^
+Spanning multiple lines.
+,zeppelin-solidity/contracts/lifecycle/Pausable.sol:46:3: Warning: No visibility specified. Defaulting to "public".
+  function unpause() onlyOwner whenPaused returns (bool) {
+  ^
+Spanning multiple lines.
+
+
+[0m[0m
+[0m  Contract: Clock Auction[0m
+[0m    Initial State[0m
+    [32m  ✓[0m[90m should start with owner and NFT address set[0m[31m (78ms)[0m
+[0m    Create auction[0m
+    [32m  ✓[0m[90m should fail to create auction for NFT you don't own[0m[33m (39ms)[0m
+    [32m  ✓[0m[90m should fail to create auction for duration too large[0m[31m (82ms)[0m
+    [32m  ✓[0m[90m should fail to create auction for nonexistant NFT[0m
+    [32m  ✓[0m[90m should fail to create auction without first approving auction contract[0m
+    [32m  ✓[0m[90m should fail to create auction for NFT already on auction[0m[31m (134ms)[0m
+    [32m  ✓[0m[90m should be able to create auction[0m[31m (125ms)[0m
+[0m    Bidding[0m
+    [32m  ✓[0m[90m should fail to bid with insufficient value[0m
+    [32m  ✓[0m[90m should fail to bid if auction has been concluded[0m[33m (75ms)[0m
+start
+95713087200000000100
+100
+0xf17f52151ebef6c7334fad080c5704d77216b732
+0xf17f52151ebef6c7334fad080c5704d77216b732
+    [32m  ✓[0m[90m should be able to bid[0m[31m (98ms)[0m
+    [32m  ✓[0m[90m should be able to bid at endingPrice if auction has passed duration[0m[31m (292ms)[0m
+    [32m  ✓[0m[90m should fail to bid after someone else has bid[0m[33m (61ms)[0m
+    [32m  ✓[0m[90m should be able to bid in middle of auction[0m[31m (285ms)[0m
+    [32m  ✓[0m[90m should trigger an event after successful bid[0m[33m (46ms)[0m
+[0m    Conclude auction[0m
+    [32m  ✓[0m[90m should fail to conclude if NFT not on auction[0m
+    [32m  ✓[0m[90m should fail to conclude auction if not seller[0m
+    [32m  ✓[0m[90m should be able to conclude auction[0m[31m (264ms)[0m
+    [32m  ✓[0m[90m should be able to conclude ongoing auction[0m[33m (51ms)[0m
+    [32m  ✓[0m[90m should trigger event after concluding auction[0m[31m (262ms)[0m
+[0m    Owner cut[0m
+    [32m  ✓[0m[90m should add owner's cut of sale to balance[0m[31m (191ms)[0m
+[0m    Cancel auctions while paused[0m
+    [32m  ✓[0m[90m should fail to cancel auction when not paused[0m
+    [32m  ✓[0m[90m should fail to cancel auction when not owner[0m[33m (48ms)[0m
+    [32m  ✓[0m[90m should be able to cancel auction as owner when paused[0m[31m (99ms)[0m
+    [32m  ✓[0m[90m should be able to cancel auction as auction owner when paused[0m[31m (97ms)[0m
+[0m    Current price computation[0m
+    [36m  - increasing price[0m
+    [36m  - decreasing price[0m
+    [36m  - fixed price[0m
+    [36m  - down to zero[0m
+    [36m  - up from zero[0m
+    [36m  - always zero[0m
+    [36m  - Big numbers[0m
+
+[0m  Contract: KittyCore[0m
+[0m    Initial state[0m
+    [32m  ✓[0m[90m should own contract[0m[33m (60ms)[0m
+[0m    Kitten creation:[0m
+    [32m  ✓[0m[90m create a promotional kittens[0m[31m (409ms)[0m
+[0m    NonFungible, EIP-721[0m
+    [32m  ✓[0m[90m create a few kittens[0m[31m (235ms)[0m
+    [32m  ✓[0m[90m approve + transferFrom + ownerOf[0m[31m (129ms)[0m
+    [32m  ✓[0m[90m balanceOf[0m[31m (102ms)[0m
+    [32m  ✓[0m[90m tokensOfOwnerByIndex[0m[31m (438ms)[0m
+    [36m  - tokenMetadata[0m
+[0m    Siring[0m
+    [32m  ✓[0m[90m create a few kittens[0m[31m (232ms)[0m
+    [32m  ✓[0m[90m kitten cant sire itself[0m
+    [32m  ✓[0m[90m siring is only allowed with due permissions[0m[31m (419ms)[0m
+    [32m  ✓[0m[90m pregnant kitten cant sire[0m[33m (64ms)[0m
+    [32m  ✓[0m[90m sire has cooldown after siring[0m[33m (55ms)[0m
+    [32m  ✓[0m[90m allowed user cant re-use the same sire permission[0m[31m (274ms)[0m
+[0m    Kitty Breeding:[0m
+    [32m  ✓[0m[90m create some kittens[0m[31m (140ms)[0m
+    [32m  ✓[0m[90m kitA gets pregnant from kitB[0m[31m (153ms)[0m
+    [32m  ✓[0m[90m tries and fails to get kitA pregnant again[0m
+    [32m  ✓[0m[90m wait kitA be ready to give birth[0m[31m (244ms)[0m
+    [32m  ✓[0m[90m have kitA give birth to kitD[0m[31m (201ms)[0m
+    [32m  ✓[0m[90m kitD can breed right after being born[0m[31m (127ms)[0m
+    [32m  ✓[0m[90m kitD can't breed with either parent, but can breed with kitC, who is unrelated[0m[31m (240ms)[0m
+    [32m  ✓[0m[90m test that siblings cant breed[0m[31m (805ms)[0m
+    [32m  ✓[0m[90m test breedWithAuto still retains the same requirements[0m[31m (281ms)[0m
+    [32m  ✓[0m[90m make breedWithAuto happen and check event[0m[31m (623ms)[0m
+    [32m  ✓[0m[90m test that anyone can give birth to a kitten[0m[31m (255ms)[0m
+[0m    Cooldowns progression[0m
+    [32m  ✓[0m[90m create some kittens[0m[33m (69ms)[0m
+    [32m  ✓[0m[90m Let them breed and give birth[0m[31m (346ms)[0m
+    [32m  ✓[0m[90m KitA can breed again right away[0m[31m (515ms)[0m
+    [32m  ✓[0m[90m KitB now will be the one pregnant[0m[31m (536ms)[0m
+    [32m  ✓[0m[90m After reaching the limit it stops at max cooldown[0m[31m (3948ms)[0m
+[0m    Roles: CEO + CFO[0m
+    [32m  ✓[0m[90m COO try to appoint another COO, but cant[0m
+    [32m  ✓[0m[90m CEO can appoint a CFO[0m[33m (45ms)[0m
+    [32m  ✓[0m[90m CEO can appoint another coo[0m
+    [32m  ✓[0m[90m new coo can do things, old coo cant anymore[0m[33m (65ms)[0m
+    [32m  ✓[0m[90m CEO can appoint another CEO[0m[33m (47ms)[0m
+    [32m  ✓[0m[90m old CEO cant do anything since they were replaced[0m[33m (43ms)[0m
+    [32m  ✓[0m[90m CFO can drain funds[0m[31m (265ms)[0m
+[0m    Contract Upgrade[0m
+    [32m  ✓[0m[90m user2 fails to pause contract - not coo[0m
+    [32m  ✓[0m[90m coo can pause the contract[0m[33m (51ms)[0m
+    [32m  ✓[0m[90m functions that alter state can't execute while paused[0m[33m (72ms)[0m
+    [32m  ✓[0m[90m can read state of all kittens while paused[0m[31m (77ms)[0m
+    [32m  ✓[0m[90m unpause[0m[33m (61ms)[0m
+    [32m  ✓[0m[90m kitten 1 give birth[0m[31m (295ms)[0m
+    [32m  ✓[0m[90m set new contract address[0m[31m (815ms)[0m
+[0m    sub contracts[0m
+    [32m  ✓[0m[90m can't assign an address that isnt Breeding to breeding[0m
+    [32m  ✓[0m[90m can't assign an address that isnt Breeding to breeding 2[0m
+    [32m  ✓[0m[90m can't assign an address that isnt Breeding to breeding 3[0m[33m (51ms)[0m
+    [32m  ✓[0m[90m can set a valid breeding contract[0m[31m (482ms)[0m
+    [32m  ✓[0m[90m everything still works with new breeding contract[0m[31m (194ms)[0m
+[0m    Rescue lost kitties[0m
+    [32m  ✓[0m[90m should fail to rescue kitties that aren't owned by the contract[0m
+    [32m  ✓[0m[90m should fail to rescue kitties if not coo[0m
+    [32m  ✓[0m[90m should be able to rescue kitties that are owned by the contract[0m[33m (74ms)[0m
+[0m    Auction wrapper[0m
+    [32m  ✓[0m[90m non-CEO should fail to set auction addresses[0m[33m (50ms)[0m
+    [32m  ✓[0m[90m CEO should be able to set auction addresses[0m[33m (74ms)[0m
+    [32m  ✓[0m[90m should fail to create sale auction if not cat owner[0m
+    [32m  ✓[0m[90m should be able to create sale auction[0m[33m (74ms)[0m
+    [32m  ✓[0m[90m should fail to breed if sire is on sale auction[0m
+    [32m  ✓[0m[90m should be able to bid on sale auction[0m[31m (347ms)[0m
+    [32m  ✓[0m[90m should fail to create siring auction if not cat owner[0m
+    [32m  ✓[0m[90m should be able to create siring auction[0m[33m (72ms)[0m
+    [32m  ✓[0m[90m should fail to breed if sire is on siring auction[0m
+    [32m  ✓[0m[90m should fail to bid on siring auction if matron is in cooldown[0m[31m (265ms)[0m
+    [32m  ✓[0m[90m should be able to bid on siring auction[0m[31m (591ms)[0m
+    [32m  ✓[0m[90m should be able to cancel a sale auction[0m[31m (97ms)[0m
+    [32m  ✓[0m[90m should be able to cancel a siring auction[0m[31m (116ms)[0m
+    [32m  ✓[0m[90m should be able to bid on siring auction with autobirth[0m[31m (176ms)[0m
+[0m    Gen0 Auction[0m
+    [32m  ✓[0m[90m should fail to create gen0 auction if not coo[0m
+    [32m  ✓[0m[90m should start aveSalePrice at 0[0m[33m (49ms)[0m
+    [32m  ✓[0m[90m should be able to create gen0 auction[0m[31m (171ms)[0m
+    [32m  ✓[0m[90m avePrice should be unchanged (no sale yet)[0m[33m (67ms)[0m
+    [32m  ✓[0m[90m should be able to bid on gen0 auction[0m[33m (75ms)[0m
+    [32m  ✓[0m[90m avePrice should be about 1/5 starting price after first sale[0m[33m (48ms)[0m
+    [32m  ✓[0m[90m avePrice should not be influenced by regular auctions[0m[31m (233ms)[0m
+    [32m  ✓[0m[90m next 3 gen0 auctions should be startingPrice[0m[31m (650ms)[0m
+    [32m  ✓[0m[90m gen0 auctions should compute price based on previous sales[0m[31m (126ms)[0m
+[0m    auction withdrawals[0m
+    [32m  ✓[0m[90m should fail to withdraw as non-coo[0m
+    [32m  ✓[0m[90m should be able to withdraw as coo[0m[31m (622ms)[0m
+    [32m  ✓[0m[90m should fail to withdraw via core as non-COO[0m
+    [32m  ✓[0m[90m should be able to withdraw via core as COO[0m[31m (624ms)[0m
+Gas spent on test suite: 44334611900000879300
+
+
+[92m [0m[32m 101 passing[0m[90m (46s)[0m
+[36m [0m[36m 8 pending[0m
+

@@ -1,0 +1,114 @@
+{
+    "rescueCat@rescueOrder[ori(rescueIndex)]": [
+        "catNames_bytes32 == \"\"",
+        "adoptionRequests_catId == \"\"",
+        "adoptionOffers_price == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionRequests_price one of [0]",
+        "adoptionOffers_catId == \"\""
+    ],
+    "nameCat@catId": [
+        "adoptionOffers_price == 0",
+        "catNames_bytes32 != \"\"",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price one of [0,2000000000000000,10000000000000000]",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "catOwners_address != 0"
+    ],
+    "makeAdoptionOffer@catId": [
+        "adoptionOffers_catId != \"\"",
+        "adoptionOffers_seller != 0",
+        "adoptionRequests_price one of [0,10000000000000000]",
+        "adoptionOffers_onlyOfferTo == 0",
+        "catOwners_address != 0",
+        "adoptionOffers_price > 0"
+    ],
+    "cancelAdoptionOffer@catId": [
+        "catNames_bytes32 == \"\"",
+        "adoptionRequests_catId == \"\"",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_catId != \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionRequests_price one of [0]",
+        "catOwners_address != 0"
+    ],
+    "acceptAdoptionOffer@catId": [
+        "adoptionOffers_price == 0",
+        "adoptionOffers_catId != \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionRequests_price one of [0]",
+        "catOwners_address != 0"
+    ],
+    "giveCat@catId": [
+        "adoptionRequests_catId == \"\"",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_catId != \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionRequests_price one of [0]",
+        "catOwners_address != 0"
+    ],
+    "makeAdoptionRequest@catId": [
+        "adoptionRequests_requester != 0",
+        "adoptionOffers_price == 0",
+        "adoptionRequests_price > 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_catId != \"\"",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "catOwners_address != 0"
+    ],
+    "acceptAdoptionRequest@catId": [
+        "adoptionOffers_price == 0",
+        "adoptionOffers_catId != \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_catId != \"\"",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionRequests_price one of [0]",
+        "catOwners_address != 0"
+    ],
+    "cancelAdoptionRequest@catId": [
+        "catNames_bytes32 == \"\"",
+        "adoptionOffers_price == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_catId != \"\"",
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionRequests_price one of [0]",
+        "catOwners_address != 0"
+    ],
+    "addGenesisCatGroup@rescueOrder[ori(rescueIndex)]": [
+        "catNames_bytes32 == \"\"",
+        "adoptionRequests_catId == \"\"",
+        "adoptionOffers_catId != \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_seller != 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "catOwners_address == 0",
+        "adoptionRequests_price one of [0]",
+        "adoptionOffers_price one of [300000000000000000,600000000000000000,1500000000000000000,900000000000000000,1200000000000000000,1800000000000000000]",
+        "adoptionOffers_price > 0"
+    ]
+}

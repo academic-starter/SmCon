@@ -1,0 +1,13 @@
+digraph "./InvConPlus/Dapp-Automata-data/result/model/0x6090A6e47849629b7245Dfa1Ca21D94cd15878Ef/Registrar/FSM-0" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	0 [label=0 shape=circle]
+	1 [label=1 shape=circle]
+	"" -> 0 [label=""]
+	0 -> 1 [label=startAuction]
+	0 -> 1 [label=startAuctions]
+	0 -> 1 [label=startAuctionsAndBid]
+	1 -> 1 [label=startAuction]
+	1 -> 1 [label=startAuctions]
+	1 -> 1 [label=startAuctionsAndBid]
+}

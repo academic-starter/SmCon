@@ -1,0 +1,15 @@
+{
+    "createAuction@_nftAddress@_tokenId": [],
+    "bid@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_duration one of [0,86400]",
+        "nftToTokenIdToAuction_startingPrice one of [0,6000000000000000,100000000000000000,150000000000000000,200000000000000000]",
+        "nftToTokenIdToAuction_endingPrice one of [0,4000000000000000,100000000000000000]",
+        "nftToTokenIdToAuction_startedAt one of [0,1517406085,1518494822,1518295546,1517775420]"
+    ],
+    "cancelAuction@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_startingPrice one of [0,2790000000000000000,100000000000000000,300000000000000000,2750000000000000000,11990000000000000000]",
+        "nftToTokenIdToAuction_endingPrice one of [0,2210000000000000000,900000000000000000,1000000000000000000,9770000000000000000,2750000000000000000,300000000000000000]",
+        "nftToTokenIdToAuction_startedAt one of [0,1517564195,1518288741,1517695689,1517678898,1517682715,1518786524]",
+        "nftToTokenIdToAuction_duration one of [0,864000,86400,259200]"
+    ]
+}

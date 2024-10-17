@@ -1,0 +1,53 @@
+{
+    "transfer@_tokenId": [
+        "tokenOwner_address != 0",
+        "tokenCreator_address != 0",
+        "tokenApprovals_address == 0"
+    ],
+    "addNewToken@uriOriginalToken[_uri]": [
+        "tokenOwner_address == 0",
+        "tokenSalePrice_uint256 == 0",
+        "tokenCreator_address == 0",
+        "tokenBidder_address == 0",
+        "tokenCurrentBid_uint256 == 0",
+        "tokenApprovals_address == 0"
+    ],
+    "addNewTokenWithEditions@uriOriginalToken[_uri]": [
+        "tokenOwner_address == 0",
+        "tokenSalePrice_uint256 == 0",
+        "tokenCreator_address == 0",
+        "tokenBidder_address == 0",
+        "tokenCurrentBid_uint256 == 0",
+        "tokenApprovals_address == 0"
+    ],
+    "bid@_tokenId": [
+        "tokenOwner_address != 0",
+        "tokenCreator_address != 0",
+        "tokenApprovals_address == 0"
+    ],
+    "acceptBid@_tokenId": [
+        "tokenBidder_address != 0",
+        "tokenOwner_address != 0",
+        "tokenCreator_address != 0",
+        "tokenCurrentBid_uint256 > 0",
+        "tokenApprovals_address == 0"
+    ],
+    "cancelBid@_tokenId": [
+        "tokenBidder_address != 0",
+        "tokenOwner_address != 0",
+        "tokenCreator_address != 0",
+        "tokenCurrentBid_uint256 > 0",
+        "tokenApprovals_address == 0"
+    ],
+    "buy@_tokenId": [
+        "tokenOwner_address != 0",
+        "tokenSalePrice_uint256 > 0",
+        "tokenCreator_address != 0",
+        "tokenApprovals_address == 0"
+    ],
+    "setSalePrice@_tokenId": [
+        "tokenOwner_address != 0",
+        "tokenCreator_address != 0",
+        "tokenApprovals_address == 0"
+    ]
+}

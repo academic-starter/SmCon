@@ -1,0 +1,10 @@
+digraph "Dapp-Automata-data/RQ1/azure-benchmark/workbench/Starter/Starter-dot" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	0 [label=0 shape=circle]
+	3 [label=3 shape=circle]
+	1 [label=1 shape=circle]
+	"" -> 3 [label=""]
+	0 -> 1 [label=StartPingPong]
+	3 -> 0 [label=constructor]
+}

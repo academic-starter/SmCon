@@ -1,0 +1,12 @@
+digraph "Dapp-Automata-data/result/model-fix/0x1f52b87c3503e537853e160adbf7e330ea0be7c4/SaleClockAuction/FSM-2" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	0 [label=0 shape=circle]
+	1 [label=1 shape=circle]
+	2 [label=2 shape=circle]
+	"" -> 0 [label=""]
+	0 -> 1 [label=createAuction]
+	0 -> 2 [label=createAuction]
+	2 -> 0 [label=bid]
+	1 -> 0 [label=cancelAuction]
+}

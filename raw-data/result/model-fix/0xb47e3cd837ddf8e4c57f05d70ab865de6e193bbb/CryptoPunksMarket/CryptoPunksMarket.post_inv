@@ -1,0 +1,89 @@
+{
+    "setInitialOwners@indices": [
+        "punkBids_punkIndex == 0",
+        "punksOfferedForSale_onlySellTo == 0",
+        "punkIndexToAddress_address != 0",
+        "punkBids_value one of [0]",
+        "punkBids_punkIndex one of [0]",
+        "punksOfferedForSale_punkIndex == 0",
+        "punksOfferedForSale_seller == 0",
+        "punksOfferedForSale_punkIndex one of [0]",
+        "punkBids_value == 0",
+        "punkBids_bidder == 0",
+        "punksOfferedForSale_minValue one of [0]",
+        "punksOfferedForSale_minValue == 0"
+    ],
+    "getPunk@punkIndex": [
+        "punkBids_punkIndex == 0",
+        "punksOfferedForSale_onlySellTo == 0",
+        "punkIndexToAddress_address != 0",
+        "punkBids_value one of [0]",
+        "punkBids_punkIndex one of [0]",
+        "punksOfferedForSale_punkIndex == 0",
+        "punksOfferedForSale_seller == 0",
+        "punksOfferedForSale_punkIndex one of [0]",
+        "punkBids_value == 0",
+        "punkBids_bidder == 0",
+        "punksOfferedForSale_minValue one of [0]",
+        "punksOfferedForSale_minValue == 0"
+    ],
+    "transferPunk@punkIndex": [
+        "punksOfferedForSale_minValue one of [0]",
+        "punksOfferedForSale_minValue == 0",
+        "punksOfferedForSale_onlySellTo == 0",
+        "punkIndexToAddress_address != 0"
+    ],
+    "punkNoLongerForSale@punkIndex": [
+        "punksOfferedForSale_punkIndex > 0",
+        "punksOfferedForSale_seller != 0",
+        "punksOfferedForSale_onlySellTo == 0",
+        "punkIndexToAddress_address != 0",
+        "punksOfferedForSale_minValue one of [0]",
+        "punksOfferedForSale_minValue == 0"
+    ],
+    "offerPunkForSale@punkIndex": [
+        "punksOfferedForSale_seller != 0",
+        "punksOfferedForSale_onlySellTo == 0",
+        "punkIndexToAddress_address != 0"
+    ],
+    "offerPunkForSaleToAddress@punkIndex": [
+        "punksOfferedForSale_minValue one of [10000000000000000,500000000000000000,4000000000000000000,410000000000000000,1000000000000000000,1890000000000000000,2000000000000000000,20000000000000000000]",
+        "punksOfferedForSale_punkIndex > 0",
+        "punksOfferedForSale_seller != 0",
+        "punkIndexToAddress_address != 0",
+        "punksOfferedForSale_punkIndex one of [6948,1093,2253,8432,3474,6965,2711,1048,7804,3134]",
+        "punkBids_punkIndex one of [0,6948,1093,6965,2711,7804]",
+        "punkBids_value one of [0,210100000000000000,230000000000000000,1590000000000000001,5255266005919210546]",
+        "punksOfferedForSale_minValue > 0"
+    ],
+    "buyPunk@punkIndex": [
+        "punksOfferedForSale_punkIndex > 0",
+        "punksOfferedForSale_seller != 0",
+        "punksOfferedForSale_onlySellTo == 0",
+        "punkIndexToAddress_address != 0",
+        "punksOfferedForSale_minValue one of [0]",
+        "punksOfferedForSale_minValue == 0"
+    ],
+    "enterBidForPunk@punkIndex": [
+        "punkBids_bidder != 0",
+        "punkBids_value > 0",
+        "punkIndexToAddress_address != 0"
+    ],
+    "acceptBidForPunk@punkIndex": [
+        "punksOfferedForSale_seller != 0",
+        "punksOfferedForSale_onlySellTo == 0",
+        "punkIndexToAddress_address != 0",
+        "punkBids_value one of [0]",
+        "punkBids_value == 0",
+        "punkBids_bidder == 0",
+        "punksOfferedForSale_minValue one of [0]",
+        "punksOfferedForSale_minValue == 0"
+    ],
+    "withdrawBidForPunk@punkIndex": [
+        "punkIndexToAddress_address != 0",
+        "punkBids_punkIndex > 0",
+        "punkBids_value one of [0]",
+        "punkBids_value == 0",
+        "punkBids_bidder == 0"
+    ]
+}

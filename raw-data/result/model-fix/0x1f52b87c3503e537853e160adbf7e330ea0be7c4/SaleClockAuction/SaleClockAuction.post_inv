@@ -1,0 +1,35 @@
+{
+    "createAuction@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_startedAt > 0",
+        "nftToTokenIdToAuction_duration one of [86400,172800,259200,43200,345600,604800,864000,1036800]",
+        "nftToTokenIdToAuction_nftAddress != 0",
+        "nftToTokenIdToAuction_startingPrice > 0",
+        "nftToTokenIdToAuction_seller != 0",
+        "nftToTokenIdToAuction_duration > 0",
+        "nftToTokenIdToAuction_endingPrice > 0"
+    ],
+    "bid@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_endingPrice one of [0]",
+        "nftToTokenIdToAuction_seller == 0",
+        "nftToTokenIdToAuction_duration == 0",
+        "nftToTokenIdToAuction_startingPrice == 0",
+        "nftToTokenIdToAuction_duration one of [0]",
+        "nftToTokenIdToAuction_nftAddress == 0",
+        "nftToTokenIdToAuction_endingPrice == 0",
+        "nftToTokenIdToAuction_startedAt == 0",
+        "nftToTokenIdToAuction_startedAt one of [0]",
+        "nftToTokenIdToAuction_startingPrice one of [0]"
+    ],
+    "cancelAuction@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_endingPrice one of [0]",
+        "nftToTokenIdToAuction_seller == 0",
+        "nftToTokenIdToAuction_duration == 0",
+        "nftToTokenIdToAuction_startingPrice == 0",
+        "nftToTokenIdToAuction_duration one of [0]",
+        "nftToTokenIdToAuction_nftAddress == 0",
+        "nftToTokenIdToAuction_endingPrice == 0",
+        "nftToTokenIdToAuction_startedAt == 0",
+        "nftToTokenIdToAuction_startedAt one of [0]",
+        "nftToTokenIdToAuction_startingPrice one of [0]"
+    ]
+}

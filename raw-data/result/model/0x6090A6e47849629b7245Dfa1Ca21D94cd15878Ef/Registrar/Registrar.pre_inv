@@ -1,0 +1,23 @@
+{
+    "startAuction@_hash": [
+        "_entries_value one of [0]",
+        "_entries_highestBid one of [0]",
+        "_entries_value == 0",
+        "_entries_highestBid == 0",
+        "_entries_deed == 0"
+    ],
+    "startAuctions@_hashes": [
+        "_entries_value one of [0]",
+        "_entries_highestBid one of [0]",
+        "_entries_value == 0",
+        "_entries_highestBid == 0",
+        "_entries_deed == 0"
+    ],
+    "startAuctionsAndBid@hashes": [
+        "_entries_value one of [0]",
+        "_entries_highestBid one of [0]",
+        "_entries_value == 0",
+        "_entries_highestBid == 0",
+        "_entries_deed == 0"
+    ]
+}

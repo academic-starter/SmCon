@@ -1,0 +1,103 @@
+{
+    "rescueCat@rescueOrder[ori(rescueIndex)]": [
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "catOwners_address == 0",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_catId == \"\"",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_price one of [0]",
+        "catNames_bytes32 == \"\"",
+        "adoptionRequests_requester == 0"
+    ],
+    "nameCat@catId": [
+        "adoptionOffers_seller == 0",
+        "adoptionRequests_price one of [0,2000000000000000,10000000000000000]",
+        "catOwners_address != 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "catNames_bytes32 == \"\""
+    ],
+    "makeAdoptionOffer@catId": [
+        "adoptionRequests_price one of [0,10000000000000000]",
+        "adoptionOffers_price one of [0,1000000000000000000,10000000000000000,1]",
+        "adoptionOffers_onlyOfferTo == 0",
+        "catOwners_address != 0"
+    ],
+    "cancelAdoptionOffer@catId": [
+        "adoptionOffers_price one of [1000000000000000000,250000000000000000,10000000000000000,100000000000000000,500000000000000]",
+        "catOwners_address != 0",
+        "adoptionOffers_catId != \"\"",
+        "adoptionOffers_price > 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_price one of [0]",
+        "adoptionOffers_seller != 0",
+        "catNames_bytes32 == \"\"",
+        "adoptionRequests_requester == 0"
+    ],
+    "acceptAdoptionOffer@catId": [
+        "adoptionOffers_catId != \"\"",
+        "adoptionOffers_price > 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_price one of [0]",
+        "adoptionOffers_seller != 0",
+        "adoptionRequests_requester == 0"
+    ],
+    "giveCat@catId": [
+        "catOwners_address != 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionOffers_price one of [0,100000000000000000,4000000000000000,20000000000000000]",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_price one of [0]",
+        "adoptionRequests_requester == 0"
+    ],
+    "makeAdoptionRequest@catId": [
+        "adoptionOffers_seller == 0",
+        "catOwners_address != 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0"
+    ],
+    "acceptAdoptionRequest@catId": [
+        "adoptionOffers_seller == 0",
+        "adoptionRequests_catId != \"\"",
+        "catOwners_address != 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionRequests_price one of [2000000000000000,10000000000000000,25000000000000000,200000000000000000]",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price > 0",
+        "adoptionRequests_requester != 0"
+    ],
+    "cancelAdoptionRequest@catId": [
+        "adoptionOffers_seller == 0",
+        "adoptionRequests_catId != \"\"",
+        "catOwners_address != 0",
+        "adoptionRequests_requester != 0",
+        "adoptionOffers_price one of [0]",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price > 0",
+        "catNames_bytes32 == \"\""
+    ],
+    "addGenesisCatGroup@rescueOrder[ori(rescueIndex)]": [
+        "adoptionOffers_seller == 0",
+        "adoptionOffers_price one of [0]",
+        "catOwners_address == 0",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_catId == \"\"",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_price one of [0]",
+        "catNames_bytes32 == \"\"",
+        "adoptionRequests_requester == 0"
+    ]
+}

@@ -1,0 +1,1478 @@
+yarn run v1.22.21
+warning ../../../../../package.json: No license field
+$ hardhat test
+(node:497686) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+  DummyParser
+    ✓ parse data
+
+  Contract: DNSRegistrar
+    ✓ allows anyone to claim on behalf of the owner of an ENS name
+    ✓ allows claims on names that are not TLDs
+    ✓ allows anyone to update a DNSSEC referenced name
+    ✓ rejects proofs with earlier inceptions
+    ✓ does not allow updates with stale records
+    ✓ allows the owner to claim and set a resolver
+    ✓ does not allow anyone else to claim and set a resolver
+    ✓ sets an address on the resolver if provided
+    ✓ forbids setting an address if the resolver is not also set
+    ✓ does not allow setting the owner to 0 with an empty record
+
+  Contract: DNSRegistrar
+    ✓ cannot claim multiple names using single unrelated proof
+    ✓ cannot takeover claimed DNS domains using unrelated proof
+
+  Contract: OffchainDNSResolver
+    ✓ should respond to resolution requests with a CCIP read request to the DNS gateway
+    ✓ handles calls to resolveCallback() with valid DNS TXT records containing an address
+    ✓ handles calls to resolveCallback() with extra data and a legacy resolver
+    ✓ handles calls to resolveCallback() with valid DNS TXT records containing a name
+    ✓ rejects calls to resolveCallback() with an invalid TXT record
+    ✓ handles calls to resolveCallback() where the valid TXT record is not the first
+    ✓ respects the first record with a valid resolver
+    ✓ correctly handles extra (string) data in the TXT record when calling a resolver that supports it
+    ✓ correctly handles extra data in the TXT record when calling a resolver that supports address resolution
+    ✓ correctly handles extra data in the TXT record when calling a resolver that supports address resolution with valid cointype
+    ✓ handles extra data in the TXT record when calling a resolver that supports address resolution with invalid cointype
+    ✓ raise an error if extra (address) data in the TXT record is invalid
+    ✓ correctly resolves using legacy resolvers without resolve() support
+    ✓ should prevent OffchainLookup error propagation from non-CCIP-aware contracts
+
+  Contract: TLDPublicSuffixList
+    ✓ treats all TLDs as public suffixes
+    ✓ treats non-TLDs as non-public suffixes
+
+  Contract: RSASHA1Algorithm
+    ✓ should return true for valid signatures
+    ✓ should return false for invalid signatures
+
+  Contract: RSASHA256Algorithm
+    ✓ should return true for valid signatures
+    ✓ should return false for invalid signatures
+
+  Contract: P256SHA256Algorithm
+    ✓ should return true for valid signatures
+    ✓ should return false for invalid signatures
+
+  Contract: DNSSEC
+    ✓ should accept real DNSSEC records
+
+  Contract: DNSSEC
+    ✓ should have a default algorithm and digest set
+    ✓ should only allow the owner to set digests
+    ✓ should only allow the owner to set algorithms
+    ✓ should reject signatures with non-matching algorithms
+    ✓ should reject signatures with non-matching keytags
+    ✓ should accept odd-length public keys
+    ✓ should reject signatures by keys without the ZK bit set
+    ✓ should accept a root DNSKEY
+    ✓ should accept a signed RRSET
+    ✓ should reject signatures with non-IN classes
+    ✓ should reject signatures with the wrong type covered
+    ✓ should reject signatures with too many labels
+    ✓ should reject signatures with invalid signer names
+    ✓ should reject signatures with invalid signer names (2)
+    ✓ should reject signatures with unknown algorithms
+    ✓ should reject entries with expirations in the past
+    ✓ should reject entries with inceptions in the future
+    ✓ should reject invalid RSA signatures
+    ✓ should reject DS proofs with the wrong name
+    ✓ should accept a self-signed set using DS records
+
+  Contract: SHA256Digest
+    ✓ should return true for valid hashes
+    ✓ should return false for invalid hashes
+    ✓ should throw an error for hashes of the wrong form
+
+  Contract: SHA1Digest
+    ✓ should return true for valid hashes
+    ✓ should return false for invalid hashes
+    ✓ should throw an error for hashes of the wrong form
+
+  Contract: TestBytesUtils
+    ✓ testBase32HexDecodeWord
+    ✓ testCompare
+    ✓ testComparePartial
+    ✓ testEquals
+    ✓ testKeccak
+    ✓ testReadBytes20
+    ✓ testReadBytes32
+    ✓ testReadUint16
+    ✓ testReadUint32
+    ✓ testReadUint8
+    ✓ testSubstring
+
+  Contract: TestRRUtils
+    ✓ testCompareNames
+    ✓ testIterateRRs
+    ✓ testKeyTag
+    ✓ testLabelCount
+    ✓ testNameLength
+    ✓ testSerialNumberGt
+
+  Contract: BaseRegistrar
+    ✓ should allow new registrations
+    ✓ should allow registrations without updating the registry
+    ✓ should allow renewals
+    ✓ should only allow the controller to register
+    ✓ should only allow the controller to renew
+    ✓ should not permit registration of already registered names
+    ✓ should not permit renewing a name that is not registered
+    ✓ should permit the owner to reclaim a name
+    ✓ should prohibit anyone else from reclaiming a name
+    ✓ should permit the owner to transfer a registration
+    ✓ should prohibit anyone else from transferring a registration
+    ✓ should not permit transfer or reclaim during the grace period
+    ✓ should allow renewal during the grace period
+    ✓ should allow registration of an expired domain
+    ✓ should allow the owner to set a resolver address
+
+  Contract: BulkRenewal
+
+    1) should return the cost of a bulk renewal
+    ✓ should raise an error trying to renew a nonexistent name
+
+    2) should permit bulk renewal of names
+
+  Contract: ETHRegistrarController
+    ✓ should report label validity
+    ✓ should report unused names as available
+    ✓ should permit new registrations
+    ✓ should revert when not enough ether is transferred
+    ✓ should report registered names as unavailable
+    ✓ should permit new registrations with resolver and records
+    ✓ should not permit new registrations with 0 resolver
+    ✓ should not permit new registrations with EoA resolver
+    ✓ should not permit new registrations with an incompatible contract
+    ✓ should not permit new registrations with records updating a different name
+    ✓ should not permit new registrations with any record updating a different name
+    ✓ should permit a registration with resolver but no records
+    ✓ should include the owner in the commitment
+    ✓ should reject duplicate registrations
+    ✓ should reject for expired commitments
+    ✓ should allow anyone to renew a name without changing fuse expiry
+    ✓ should allow token owners to renew a name
+    ✓ non wrapped names can renew
+    ✓ should require sufficient value for a renewal
+    ✓ should allow anyone to withdraw funds and transfer to the registrar owner
+    ✓ should set the reverse record of the account
+    ✓ should not set the reverse record of the account when set to false
+    ✓ should auto wrap the name and set the ERC721 owner to the wrapper
+    ✓ should auto wrap the name and allow fuses and expiry to be set
+380442
+387872 387872
+    ✓ approval should reduce gas for registration
+    ✓ should not permit new registrations with non resolver function calls
+
+  Contract: ExponentialPricePremiumOracle
+    ✓ should return correct base prices
+    ✓ should not specify a premium for first-time registrations
+    ✓ should not specify a premium for renewals
+    ✓ should specify the maximum premium at the moment of expiration
+    ✓ should specify the correct price after 2.5 days and 1 year registration
+    ✓ should produce a 0 premium at the end of the decay period
+    ✓ should not be beyond a certain amount of inaccuracy from floating point calc
+
+  Contract: LinearPremiumPriceOracle
+    ✓ should report the correct premium and decrease rate
+    ✓ should return correct base prices
+    ✓ should not specify a premium for first-time registrations
+    ✓ should not specify a premium for renewals
+    ✓ should specify the maximum premium at the moment of expiration
+    ✓ should specify half the premium after half the interval
+    ✓ should return correct times for price queries
+
+  Contract: StablePriceOracle
+    ✓ should return correct prices
+    ✓ should work with larger values
+
+  Contract: StaticBulkRenewal
+    ✓ should return the cost of a bulk renewal
+    ✓ should raise an error trying to renew a nonexistent name
+    ✓ should permit bulk renewal of names
+
+  Contract: ENS Solidity
+    ✓ should allow ownership transfers
+    ✓ should prohibit transfers by non-owners
+    ✓ should allow setting resolvers
+    ✓ should prevent setting resolvers by non-owners
+    ✓ should allow setting the TTL
+    ✓ should prevent setting the TTL by non-owners
+    ✓ should allow the creation of subnodes
+    ✓ should prohibit subnode creation by non-owners
+
+  Contract: ENSRegistryWithFallback
+    ✓ should allow setting the record
+    ✓ should allow setting subnode records
+    ✓ should implement authorisations/operators
+    fallback
+      ✓ should use fallback ttl if owner not set
+      ✓ should use fallback owner if owner not set
+      ✓ should use fallback resolver if owner not set
+
+  Contract: FIFSRegistrar
+    ✓ should allow registration of names
+    transferring names
+      ✓ should allow transferring name to your own
+      ✓ forbids transferring the name you do not own
+
+  Contract: TestRegistrar
+    ✓ registers names
+    ✓ forbids transferring names within the test period
+    ✓ allows claiming a name after the test period expires
+
+  Contract: PublicResolver
+    fallback function
+      ✓ forbids calls to the fallback function with 0 value
+      ✓ forbids calls to the fallback function with 1 value
+    supportsInterface function
+      ✓ supports known interfaces
+      ✓ does not support a random interface
+    recordVersion
+      ✓ permits clearing records
+    addr
+      ✓ permits setting address by owner
+      ✓ can overwrite previously set address
+      ✓ can overwrite to same address
+      ✓ forbids setting new address by non-owners
+      ✓ forbids writing same address by non-owners
+      ✓ forbids overwriting existing address by non-owners
+      ✓ returns zero when fetching nonexistent addresses
+      ✓ permits setting and retrieving addresses for other coin types
+      ✓ returns ETH address for coin type 60
+      ✓ setting coin type 60 updates ETH address
+      ✓ forbids calls to the fallback function with 1 value
+    addr
+      ✓ permits setting address by owner
+      ✓ can overwrite previously set address
+      ✓ can overwrite to same address
+      ✓ forbids setting new address by non-owners
+      ✓ forbids writing same address by non-owners
+      ✓ forbids overwriting existing address by non-owners
+      ✓ returns zero when fetching nonexistent addresses
+      ✓ permits setting and retrieving addresses for other coin types
+      ✓ returns ETH address for coin type 60
+      ✓ setting coin type 60 updates ETH address
+      ✓ resets record on version change
+    name
+      ✓ permits setting name by owner
+      ✓ can overwrite previously set names
+      ✓ forbids setting name by non-owners
+      ✓ returns empty when fetching nonexistent name
+      ✓ resets record on version change
+    pubkey
+      ✓ returns empty when fetching nonexistent values
+      ✓ permits setting public key by owner
+      ✓ can overwrite previously set value
+      ✓ can overwrite to same value
+      ✓ forbids setting value by non-owners
+      ✓ forbids writing same value by non-owners
+      ✓ forbids overwriting existing value by non-owners
+      ✓ resets record on version change
+    ABI
+      ✓ returns a contentType of 0 when nothing is available
+      ✓ returns an ABI after it has been set
+      ✓ returns the first valid ABI
+      ✓ allows deleting ABIs
+      ✓ rejects invalid content types
+      ✓ forbids setting value by non-owners
+      ✓ resets on version change
+    text
+      ✓ permits setting text by owner
+      ✓ can overwrite previously set text
+      ✓ can overwrite to same text
+      ✓ forbids setting new text by non-owners
+      ✓ forbids writing same text by non-owners
+      ✓ resets record on version change
+    contenthash
+      ✓ permits setting contenthash by owner
+      ✓ can overwrite previously set contenthash
+      ✓ can overwrite to same contenthash
+      ✓ forbids setting contenthash by non-owners
+      ✓ forbids writing same contenthash by non-owners
+      ✓ returns empty when fetching nonexistent contenthash
+      ✓ resets record on version change
+    dns
+      ✓ permits setting name by owner
+      ✓ should update existing records
+      ✓ should keep track of entries
+      ✓ should handle single-record updates
+      ✓ forbids setting DNS records by non-owners
+      ✓ permits setting zonehash by owner
+      ✓ can overwrite previously set zonehash
+      ✓ can overwrite to same zonehash
+      ✓ forbids setting zonehash by non-owners
+      ✓ forbids writing same zonehash by non-owners
+      ✓ returns empty when fetching nonexistent zonehash
+      ✓ emits the correct event
+      ✓ resets dnsRecords on version change
+      ✓ resets zonehash on version change
+    implementsInterface
+      ✓ permits setting interface by owner
+      ✓ can update previously set interface
+      ✓ forbids setting interface by non-owner
+      ✓ returns 0 when fetching unset interface
+      ✓ falls back to calling implementsInterface on addr
+      ✓ returns 0 on fallback when target contract does not implement interface
+      ✓ returns 0 on fallback when target contract does not support implementsInterface
+      ✓ returns 0 on fallback when target is not a contract
+      ✓ resets record on version change
+    authorisations
+      ✓ permits authorisations to be set
+      ✓ permits authorised users to make changes
+      ✓ permits authorisations to be cleared
+      ✓ permits non-owners to set authorisations
+      ✓ checks the authorisation for the current owner
+      ✓ trusted contract can bypass authorisation
+      ✓ emits an ApprovalForAll log
+      ✓ reverts if attempting to approve self as an operator
+      ✓ permits name wrapper owner to make changes if owner is set to name wrapper address
+    token approvals
+      ✓ permits delegate to be approved
+      ✓ permits delegated users to make changes
+      ✓ permits delegations to be cleared
+      ✓ permits non-owners to set delegations
+      ✓ checks the delegation for the current owner
+      ✓ emits a Approved log
+      ✓ reverts if attempting to delegate self as an delegate
+    multicall
+      ✓ allows setting multiple fields
+      ✓ allows reading multiple fields
+
+  ReverseClaimer
+    ✓ Claims a reverse node to the msg.sender of the deployer
+    ✓ Claims a reverse node to an address specified by the deployer
+
+  Contract: ReverseRegistrar
+    ✓ should calculate node hash correctly
+    claim
+      ✓ allows an account to claim its address
+      ✓ event ReverseClaimed is emitted
+    claimForAddr
+      ✓ allows an account to claim its address
+      ✓ event ReverseClaimed is emitted
+      ✓ forbids an account to claim another address
+      ✓ allows an authorised account to claim a different address
+      ✓ allows a controller to claim a different address
+      ✓ allows an owner() of a contract to claim the reverse node of that contract
+    claimWithResolver
+      ✓ allows an account to specify resolver
+      ✓ event ReverseClaimed is emitted
+    setName
+      ✓ sets name records
+      ✓ event ReverseClaimed is emitted
+    setNameForAddr
+      ✓ allows controller to set name records for other accounts
+      ✓ event ReverseClaimed is emitted
+      ✓ forbids non-controller if address is different from sender and not authorised
+      ✓ allows name to be set for an address if the sender is the address
+      ✓ allows name to be set for an address if the sender is authorised
+      ✓ allows an owner() of a contract to claimWithResolverForAddr on behalf of the contract
+    setController
+      ✓ forbid non-owner from setting a controller
+
+  Contract: Root
+    setSubnodeOwner
+      ✓ should allow controllers to set subnodes
+      ✓ should fail when non-controller tries to set subnode
+      ✓ should not allow setting a locked TLD
+
+  HexUtils
+    hexStringToBytes32()
+      ✓ Converts a hex string to bytes32
+      ✓ Uses the correct index to read from
+
+      3) Correctly parses all hex characters
+      ✓ Returns invalid when the string contains non-hex characters
+      ✓ Reverts when the string is too short
+    hexToAddress()
+      ✓ Converts a hex string to an address
+      ✓ Does not allow sizes smaller than 40 characters
+
+  Contract: ERC20Recoverable
+    recoverFunds()
+      ✓ should recover ERC20 token
+      ✓ should not allow non-owner to call
+
+  Contract: UniversalResolver
+    encodeName()
+      ✓ should encode a name
+      ✓ should encode an empty name
+      ✓ should encode a long name
+
+  Contract: UniversalResolver
+    findResolver()
+      ✓ should find an exact match resolver
+      ✓ should find a resolver on a parent name
+      ✓ should choose the resolver closest to the leaf
+      ✓ should allow encrypted labels
+      ✓ should return the final offset for the found resolver
+      ✓ should find a resolver many levels up
+    resolve()
+      ✓ should resolve a record via legacy methods
+      ✓ should throw if a resolver is not set on the queried name
+      ✓ should throw if a resolver is not a contract
+      ✓ should throw with revert data if resolver reverts
+      ✓ should throw if a resolver is not set on the queried name, and the found resolver does not support resolve()
+      ✓ should resolve a record if `supportsInterface` throws
+      ✓ should not run out of gas if calling a non-existent function on a legacy resolver
+      ✓ should return a wrapped revert if the resolver reverts with OffchainLookup
+      ✓ should use custom gateways when specified
+      batch
+        ✓ should resolve multiple records onchain
+        ✓ should resolve multiple records offchain
+    resolveSingleCallback
+      ✓ should resolve a record via a callback from offchain lookup
+    resolveCallback
+      ✓ should resolve records via a callback from offchain lookup
+      ✓ should not revert if there is an error in a call
+      ✓ should allow response at non-0 extraData index
+      ✓ should gracefully handle a non-existent function on an offchain resolver
+    reverseCallback
+      ✓ should revert with metadata for initial forward resolution if required
+      ✓ should resolve address record via a callback from offchain lookup
+    reverse()
+GAS ESTIMATE: BigNumber { _hex: '0x017ee4', _isBigNumber: true }
+      ✓ should resolve a reverse record with name and resolver address
+      ✓ should not use all the gas on a revert
+
+  BytesUtils
+    readLabel()
+      ✓ Reads the first label from a name
+      ✓ Reads subsequent labels from a name
+      ✓ Reads the terminator from a name
+      ✓ Reverts when given an empty string
+      ✓ Reverts when given an index after the end of the string
+    namehash()
+      ✓ Hashes the empty name to 0
+      ✓ Hashes .eth correctly
+      ✓ Hashes a 2LD correctly
+      ✓ Hashes partial names correctly
+
+  Name Wrapper
+    like an ERC1155
+      balanceOf
+        ✓ reverts when queried about the zero address
+        when accounts don't own tokens
+          ✓ returns zero for given addresses
+        when accounts own some tokens
+          ✓ returns the amount of tokens owned by the given addresses
+      balanceOfBatch
+        ✓ reverts when input arrays don't match up
+        ✓ reverts when one of the addresses is the zero address
+        when accounts don't own tokens
+          ✓ returns zeros for each account
+        when accounts own some tokens
+          ✓ returns amounts owned by each account in order passed
+          ✓ returns multiple times the balance of the same address when asked
+      setApprovalForAll
+        ✓ sets approval status which can be queried via isApprovedForAll
+        ✓ emits an ApprovalForAll log
+        ✓ can unset approval for an operator
+        ✓ reverts if attempting to approve self as an operator
+      safeTransferFrom
+        ✓ reverts when transferring more than balance
+        ✓ reverts when transferring to zero address
+        when called by the multiTokenHolder
+          ✓ debits transferred balance from sender
+          ✓ credits transferred balance to receiver
+          ✓ emits a TransferSingle log
+          ✓ preserves existing balances which are not transferred by multiTokenHolder
+        when called by an operator on behalf of the multiTokenHolder
+          when operator is not approved by multiTokenHolder
+            ✓ reverts
+          when operator is approved by multiTokenHolder
+            ✓ debits transferred balance from sender
+            ✓ credits transferred balance to receiver
+            ✓ emits a TransferSingle log
+            ✓ preserves operator's balances not involved in the transfer
+        when sending to a valid receiver
+          without data
+            ✓ debits transferred balance from sender
+            ✓ credits transferred balance to receiver
+            ✓ emits a TransferSingle log
+            ✓ calls onERC1155Received
+          with data
+            ✓ debits transferred balance from sender
+            ✓ credits transferred balance to receiver
+            ✓ emits a TransferSingle log
+            ✓ calls onERC1155Received
+        to a receiver contract returning unexpected value
+          ✓ reverts
+        to a receiver contract that reverts
+          ✓ reverts
+        to a contract that does not implement the required function
+          ✓ reverts
+      safeBatchTransferFrom
+        ✓ reverts when transferring amount more than any of balances
+        ✓ reverts when ids array length doesn't match amounts array length
+        ✓ reverts when transferring to zero address
+        when called by the multiTokenHolder
+          ✓ debits transferred balances from sender
+          ✓ credits transferred balances to receiver
+          ✓ emits a TransferBatch log
+        when called by an operator on behalf of the multiTokenHolder
+          when operator is not approved by multiTokenHolder
+            ✓ reverts
+          when operator is approved by multiTokenHolder
+            ✓ debits transferred balances from sender
+            ✓ credits transferred balances to receiver
+            ✓ emits a TransferBatch log
+            ✓ preserves operator's balances not involved in the transfer
+        when sending to a valid receiver
+          without data
+            ✓ debits transferred balances from sender
+            ✓ credits transferred balances to receiver
+            ✓ emits a TransferBatch log
+            ✓ calls onERC1155BatchReceived
+          with data
+            ✓ debits transferred balances from sender
+            ✓ credits transferred balances to receiver
+            ✓ emits a TransferBatch log
+            ✓ calls onERC1155Received
+        to a receiver contract returning unexpected value
+          ✓ reverts
+        to a receiver contract that reverts
+          ✓ reverts
+        to a receiver contract that reverts only on single transfers
+          ✓ debits transferred balances from sender
+          ✓ credits transferred balances to receiver
+          ✓ emits a TransferBatch log
+          ✓ calls onERC1155BatchReceived
+        to a contract that does not implement the required function
+          ✓ reverts
+      Contract interface
+        ✓ does not implement the forbidden interface
+        ERC165
+          ERC165's supportsInterface(bytes4)
+            ✓ uses less than 30k gas [skip-on-coverage]
+            ✓ claims support
+          supportsInterface(bytes4)
+            ✓ has to be implemented
+        ERC1155
+          ERC165's supportsInterface(bytes4)
+            ✓ uses less than 30k gas [skip-on-coverage]
+            ✓ claims support
+          balanceOf(address,uint256)
+            ✓ has to be implemented
+          balanceOfBatch(address[],uint256[])
+            ✓ has to be implemented
+          setApprovalForAll(address,bool)
+            ✓ has to be implemented
+          isApprovedForAll(address,address)
+            ✓ has to be implemented
+          safeTransferFrom(address,address,uint256,uint256,bytes)
+            ✓ has to be implemented
+          safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)
+            ✓ has to be implemented
+    Contract interface
+      ✓ does not implement the forbidden interface
+      INameWrapper
+        ERC165's supportsInterface(bytes4)
+          ✓ uses less than 30k gas [skip-on-coverage]
+          ✓ claims support
+        ens()
+          ✓ has to be implemented
+        supportsInterface(bytes4)
+          ✓ has to be implemented
+        registrar()
+          ✓ has to be implemented
+        metadataService()
+          ✓ has to be implemented
+        names(bytes32)
+          ✓ has to be implemented
+        name()
+          ✓ has to be implemented
+        upgradeContract()
+          ✓ has to be implemented
+        wrap(bytes,address,address)
+          ✓ has to be implemented
+        wrapETH2LD(string,address,uint16,address)
+          ✓ has to be implemented
+        registerAndWrapETH2LD(string,address,uint256,address,uint16)
+          ✓ has to be implemented
+        renew(uint256,uint256)
+          ✓ has to be implemented
+        unwrap(bytes32,bytes32,address)
+          ✓ has to be implemented
+        unwrapETH2LD(bytes32,address,address)
+          ✓ has to be implemented
+        upgrade(bytes,bytes)
+          ✓ has to be implemented
+        setFuses(bytes32,uint16)
+          ✓ has to be implemented
+        setChildFuses(bytes32,bytes32,uint32,uint64)
+          ✓ has to be implemented
+        setSubnodeRecord(bytes32,string,address,address,uint64,uint32,uint64)
+          ✓ has to be implemented
+        setRecord(bytes32,address,address,uint64)
+          ✓ has to be implemented
+        setSubnodeOwner(bytes32,string,address,uint32,uint64)
+          ✓ has to be implemented
+        extendExpiry(bytes32,bytes32,uint64)
+          ✓ has to be implemented
+        canModifyName(bytes32,address)
+          ✓ has to be implemented
+        setResolver(bytes32,address)
+          ✓ has to be implemented
+        setTTL(bytes32,uint64)
+          ✓ has to be implemented
+        getData(uint256)
+          ✓ has to be implemented
+        setMetadataService(address)
+          ✓ has to be implemented
+        uri(uint256)
+          ✓ has to be implemented
+        setUpgradeContract(address)
+          ✓ has to be implemented
+        ownerOf(uint256)
+          ✓ has to be implemented
+        approve(address,uint256)
+          ✓ has to be implemented
+        getApproved(uint256)
+          ✓ has to be implemented
+        allFusesBurned(bytes32,uint32)
+          ✓ has to be implemented
+        isWrapped(bytes32)
+          ✓ has to be implemented
+        isWrapped(bytes32,bytes32)
+          ✓ has to be implemented
+      IERC721Receiver
+        ERC165's supportsInterface(bytes4)
+          ✓ uses less than 30k gas [skip-on-coverage]
+          ✓ claims support
+        onERC721Received(address,address,uint256,bytes)
+          ✓ has to be implemented
+    0000 - Wrapped expired without CU/PCC burned, Parent's CU not burned
+      ✓ Child should have a 0 expiry before extending
+      ✓ Parent can extend expiry with setChildFuses()
+      ✓ Parent can extend expiry with setSubnodeOwner()
+      ✓ Parent can extend expiry with setSubnodeRecord()
+      ✓ Parent cannot burn fuses with setChildFuses()
+      ✓ Parent cannot burn fuses with setSubnodeOwner()
+      ✓ Parent cannot burn fuses with setSubnodeRecord()
+      ✓ Parent cannot burn fuses with setChildFuses() even with extending expiry
+      ✓ Parent can replace owner with setSubnodeOwner()
+      ✓ Parent can replace owner with setSubnodeRecord()
+      ✓ Parent can unwrap owner with setSubnodeRecord() and then unwrap
+      ✓ Parent cannot burn parent-controlled fuses
+      ✓ Owner is still owner when expired
+      ✓ Owner cannot burn CU because PCC is unburnt
+      ✓ Owner cannot burn other fuses because CU and PCC is unburnt
+      ✓ Owner can unwrap
+    0001 - PCU - Wrapped expired without CU/PCC burned, Parent's CU is burned
+      ✓ Child should have a 0 expiry before extending
+      ✓ Parent can extend expiry with setChildFuses()
+      ✓ Parent can extend expiry with setSubnodeOwner()
+      ✓ Parent can extend expiry with setSubnodeRecord()
+      ✓ Parent cannot burn fuses with setChildFuses()
+      ✓ Parent can burn fuses with setChildFuses() if expiry is also extended
+      ✓ Parent can replace owner with setSubnodeOwner()
+      ✓ Parent can replace owner with setSubnodeRecord()
+      ✓ Parent can unwrap owner with setSubnodeRecord() and then unwrap
+      ✓ Parent cannot burn parent-controlled fuses as they reset to 0
+      ✓ Parent can burn parent-controlled fuses, if expiry is extended
+      ✓ Parent cannot unwrap itself
+      ✓ Owner cannot burn CU because PCC is unburnt
+      ✓ Owner cannot burn other fuses because CU and PCC is unburnt
+      ✓ Owner can unwrap
+      ✓ Owner is still owner when expired
+    0010 - PCC -  Impossible state - WrappedPCC burned without Parent's CU 
+      ✓ 0000 => 0010 - Parent cannot burn PCC with setChildFuses()
+    0011 - PCC_PCU - Impossible state - Wrapped expired, PCC burned and Parent's CU burned 
+      ✓ 0001 => 0010 - PCU => PCC - Parent cannot burn PCC with setChildFuses()
+    0100 - CU - Impossible state - Wrapped expired, CU burned, PCC unburned and Parent's CU unburned 
+      ✓ 0000 => 0100 - DW => CU Parent - cannot burn CANNOT_UNWRAP with setChildFuses()
+      ✓ 0000 => 0100 - DW => CU - Owner cannot burn CANNOT_UNWRAP with setFuses()
+    0101 - Impossible state - Wrapped expired, CU burned, PCC unburned and Parent's CU burned 
+      ✓ 0001 => 0101 - PCU => CU_PCU - Parent cannot burn CANNOT_UNWRAP with setChildFuses()
+      ✓ 0001 => 0101 - PCU => CU_PCU -  Owner cannot burn CANNOT_UNWRAP with setFuses()
+    0110 - CU_PCC - Impossible state - Wrapped expired, CU burned, PCC burned and Parent's CU unburned 
+      ✓ 0000 => 0010 - DW => PCC - Parent cannot burn PARENT_CANNOT_CONTROL with setChildFuses()
+    0111 - CU_PCC_PCU - Impossible state - Wrapped expired, CU burned, PCC burned and Parent's CU burned 
+      ✓ 0001 => 0111 - PCU => CU_PCC_PCU - Parent cannot burn PARENT_CANNOT_CONTROL | CANNOT_UNWRAP with setChildFuses()
+    1000 - NE - Wrapped, but not expired, CU, PCC, and Parent's CU unburned 
+      ✓ Child should have an expiry < parent
+      ✓ Parent can extend expiry with setChildFuses()
+      ✓ Parent can extend expiry with setSubnodeOwner()
+      ✓ Parent can extend expiry with setSubnodeRecord()
+      ✓ Parent cannot burn fuses with setChildFuses()
+      ✓ Parent cannot burn fuses with setSubnodeOwner()
+      ✓ Parent cannot burn fuses with setSubnodeRecord()
+      ✓ Parent can replace owner with setSubnodeOwner()
+      ✓ Parent can replace owner with setSubnodeRecord()
+      ✓ Parent can unwrap owner with setSubnodeRecord() and then unwrap
+      ✓ Parent cannot burn parent-controlled fuses
+      ✓ Owner cannot burn CU because PCC is unburnt
+      ✓ Owner cannot burn other fuses because CU and PCC is unburnt
+      ✓ Owner can unwrap
+      ✓ Owner is still owner when expired
+    1001 - NE_PCU - Wrapped unexpired, CU and PCC unburned, and Parent's CU burned 
+      ✓ Child should have an expiry < parent
+      ✓ Parent can extend expiry with setChildFuses()
+      ✓ Parent can extend expiry with setSubnodeOwner()
+      ✓ Parent can extend expiry with setSubnodeRecord()
+      ✓ Parent can burn fuses with setChildFuses()
+      ✓ Parent can burn fuses with setSubnodeOwner()
+      ✓ Parent can burn fuses with setSubnodeRecord()
+      ✓ Parent cannot burn fuses if PCC is not burnt too
+      ✓ Parent can replace owner with setSubnodeOwner()
+      ✓ Parent can replace owner with setSubnodeRecord()
+      ✓ Parent can unwrap owner with setSubnodeRecord() and then unwrap
+      ✓ Parent can burn parent-controlled fuses
+      ✓ Owner cannot burn CU because PCC is unburnt
+      ✓ Owner cannot burn other fuses because CU and PCC is unburnt
+      ✓ Owner can unwrap
+      ✓ Owner is still owner when expired
+    1010 - NE_PCC - Impossible state - Wrapped unexpired, CU unburned, PCC burned and Parent's CU burned 
+      ✓ 1000 => 1010 - Parent cannot burn PCC with setChildFuses()
+      ✓ 1000 => 1010 - Parent cannot burn PCC with setSubnodeOwner()
+      ✓ 1000 => 1010 - Parent cannot burn PCC with setSubnodeRecord()
+    1011 - NE_PCC_PCU Wrapped unexpired, CU, PCC and Parent's CU burned 
+      ✓ Child should have a 0 expiry before extending
+      ✓ Parent can extend expiry with setChildFuses()
+      ✓ Parent cannot extend expiry with setSubnodeOwner()
+      ✓ Parent cannot extend expiry with setSubnodeRecord()
+      ✓ Parent cannot burn fuses with setChildFuses()
+      ✓ Parent cannot burn fuses with setSubnodeOwner()
+      ✓ Parent cannot burn fuses with setSubnodeRecord()
+      ✓ Parent cannot unburn fuses with setChildFuses()
+      ✓ Parent cannot unburn fuses with setSubnodeOwner()
+      ✓ Parent cannot unburn fuses with setSubnodeRecord()
+      ✓ Parent cannot replace owner with setSubnodeOwner()
+      ✓ Parent cannot replace owner with setSubnodeRecord()
+      ✓ Parent cannot unwrap itself
+      ✓ Parent cannot unwrap child
+      ✓ Parent cannot call ens.subnodeOwner to forcefully unwrap
+      ✓ Parent cannot burn parent-controlled fuses
+      ✓ Owner can burn CU
+      ✓ Owner cannot burn fuses because CU is unburnt
+      ✓ Owner cannot unwrap and wrap to unburn PCC
+      ✓ Owner can unwrap
+      ✓ Owner resets to 0 after expiry
+    1100 - NE_CU - Impossible State - Wrapped unexpired, CU burned, and PCC and Parent's CU unburned 
+      ✓ 1000 => 1100 - NE => NE_CU - Parent cannot burn CU with setChildFuses()
+      ✓ 1000 => 1100 - NE => NE_CU - Parent cannot burn CU with setSubnodeOwner()
+      ✓ 1000 => 1100 - NE => NE_CU - Parent cannot burn CU with setSubnodeRecord()
+      ✓ 1000 => 1100 - NE => NE_CU - Owner cannot burn CU with setFuses()
+    1101 - NE_CU_PCU -  Impossible State - Wrapped unexpired, CU burned, PCC unburned, and Parent's CU burned 
+      ✓ 1001 => 1101 - NE_PCU => NE_CU_PCU -  Parent cannot burn CU with setChildFuses()
+      ✓ 1001 => 1101 - NE_PCU => NE_CU_PCU - Parent cannot burn CU with setSubnodeOwner()
+      ✓ 1001 => 1101 - NE_PCU => NE_CU_PCU - Parent cannot burn CU with setSubnodeRecord()
+      ✓ 1001 => 1101 - NE_PCU => NE_CU_PCU - Owner cannot burn CU with setFuses()
+    1110 - NE_CU_PCC - Impossible state -  Wrapped unexpired, CU and PCC burned, and Parent's CU unburned 
+      ✓ 1000 => 1010 - Parent cannot burn PCC with setChildFuses()
+      ✓ 1000 => 1010 - Parent cannot burn PCC with setSubnodeOwner()
+      ✓ 1000 => 1010 - Parent cannot burn PCC with setSubnodeRecord()
+    1111 - NE_CU_PCC_PCU - Wrapped unexpired, CU, PCC and Parent's CU burned 
+      ✓ Child should have a 0 expiry before extending
+      ✓ Parent can extend expiry with setChildFuses()
+      ✓ Parent cannot extend expiry with setSubnodeOwner()
+      ✓ Parent cannot extend expiry with setSubnodeRecord()
+      ✓ Parent cannot unburn fuses with setChildFuses()
+      ✓ Parent cannot unburn fuses with setSubnodeOwner()
+      ✓ Parent cannot unburn fuses with setSubnodeRecord()
+      ✓ Parent cannot replace owner with setSubnodeOwner()
+      ✓ Parent cannot replace owner with setSubnodeRecord()
+      ✓ Parent cannot unwrap itself
+      ✓ Parent cannot unwrap child
+      ✓ Parent cannot call ens.subnodeOwner to forcefully unwrap
+      ✓ Parent cannot burn parent-controlled fuses
+      ✓ Owner can burn fuses
+      ✓ Owner cannot unburn fuses
+      ✓ Owner cannot unwrap
+      ✓ Owner resets to 0 after expiry
+    wrap()
+      ✓ Wraps a name if you are the owner
+      ✓ Allows specifying resolver
+      ✓ emits event for Wrap
+      ✓ emits event for TransferSingle
+      ✓ Cannot wrap a name if the owner has not authorised the wrapper with the ENS registry.
+      ✓ Will not allow wrapping with a target address of 0x0 or the wrapper contract address.
+      ✓ Will not allow wrapping with a target address of the wrapper contract address.
+      ✓ Allows an account approved by the owner on the ENS registry to wrap a name.
+      ✓ Does not allow anyone else to wrap a name even if the owner has authorised the wrapper with the ENS registry.
+      ✓ Does not allow wrapping .eth 2LDs.
+      ✓ Can re-wrap a name that was reassigned by an unwrapped parent
+      ✓ Will not wrap a name with junk at the end
+      ✓ Does not allow wrapping a name you do not own
+      ✓ Rewrapping a previously wrapped unexpired name retains PCC
+    unwrap()
+      ✓ Allows owner to unwrap name
+      ✓ Will not allow previous owner to unwrap name when name expires
+      ✓ emits Unwrap event
+      ✓ emits TransferSingle event
+      ✓ Allows an account authorised by the owner on the NFT Wrapper to unwrap a name
+      ✓ Does not allow an account authorised by the owner on the ENS registry to unwrap a name
+      ✓ Does not allow anyone else to unwrap a name
+      ✓ Will not unwrap .eth 2LDs.
+      ✓ Will not allow a target address of 0x0 or the wrapper contract address.
+      ✓ Will not allow to unwrap with PCC/CU burned if expired
+      ✓ Will allow to unwrap with PCC/CU burned if expired and then extended without PCC/CU
+      ✓ Will not allow to unwrap a name with the CANNOT_UNWRAP fuse burned if not expired
+      ✓ Unwrapping a previously wrapped unexpired name retains PCC and expiry
+    wrapETH2LD()
+      ✓ wraps a name if sender is owner
+      ✓ Cannot wrap a name if the owner has not authorised the wrapper with the .eth registrar.
+      ✓ Allows specifying resolver
+      ✓ Can re-wrap a name that was wrapped has already expired on the .eth registrar
+      ✓ Can re-wrap a name that was wrapped has already expired even if CANNOT_TRANSFER was burned
+      ✓ correctly reports fuses for a name that has expired and been rewrapped more permissively
+      ✓ correctly reports fuses for a name that has expired and been rewrapped more permissively with registerAndWrap()
+      ✓ emits Wrap event
+      ✓ emits TransferSingle event
+      ✓ Transfers the wrapped token to the target address.
+      ✓ Does not allow wrapping with a target address of 0x0
+      ✓ Does not allow wrapping with a target address of the wrapper contract address.
+      ✓ Allows an account approved by the owner on the .eth registrar to wrap a name.
+      ✓ Does not allow anyone else to wrap a name even if the owner has authorised the wrapper with the ENS registry.
+      ✓ Can wrap a name even if the controller address is different to the registrant address.
+      ✓ Does not allow the controller of a name to wrap it if they are not also the registrant.
+      ✓ Does not allows fuse to be burned if CANNOT_UNWRAP has not been burned.
+      ✓ cannot burn any parent controlled fuse
+      ✓ Allows fuse to be burned if CANNOT_UNWRAP has been burned
+      ✓ Allows fuse to be burned if CANNOT_UNWRAP has been burned, but resets to 0 if expired
+      ✓ Will not wrap an empty name
+      ✓ Will not wrap a label greater than 255 characters
+      ✓ Rewrapping a previously wrapped unexpired name retains PCC and expiry
+    unwrapETH2LD()
+      ✓ Allows the owner to unwrap a name.
+      ✓ Does not allows the previous owner to unwrap when the name has expired.
+      ✓ emits Unwrap event
+      ✓ Emits TransferSingle event
+      ✓ Does not allows an account authorised by the owner on the ENS registrar to unwrap a name
+      ✓ Does not allow anyone else to unwrap a name even if the owner has authorised the wrapper with the ENS registry.
+      ✓ Does not allow a name to be unwrapped if CANNOT_UNWRAP fuse has been burned
+      ✓ Unwrapping a previously wrapped unexpired name retains PCC and expiry
+    ownerOf()
+      ✓ Returns the owner
+      ✓ Returns 0 when owner is expired
+    ownerOf()
+      ✓ Returns the owner
+      ✓ Returns 0 when owner is expired
+    approve()
+      ✓ Sets an approval address if owner
+      ✓ Sets an approval address if is an operator
+      ✓ Reverts if called by an approved address
+      ✓ Reverts if called by non-owner or approved
+      ✓ Emits Approval event
+      ✓ Allows approved address to call extendExpiry()
+      ✓ Does not allows approved address to call setSubnodeOwner()
+      ✓ Allows approved address to call setSubnodeRecord()
+      ✓ Allows approved address to call setChildFuses()
+      ✓ Does not allow approved accounts to extend expiry when expired
+      ✓ Approved address can be replaced and previous approved is removed
+      ✓ Approved address cannot be removed/replaced when fuse is burnt
+      ✓ Approved address cannot transfer the name
+      ✓ Approved address cannot transfer the name with setRecord()
+      ✓ Approved address cannot call setResolver()
+      ✓ Approved address cannot call setTTL()
+      ✓ Approved address cannot unwrap .eth
+      ✓ Approved address cannot unwrap non .eth
+      ✓ Approval is cleared on transfer
+      ✓ Approval is cleared on unwrapETH2LD()
+      ✓ Approval is cleared on unwrap()
+      ✓ Approval is cleared on re-registration and wrap of expired name
+      ✓ Approval is not cleared on transfer if CANNOT_APPROVE is burnt
+    getApproved()
+      ✓ Returns returns zero address when ownerOf() is zero
+      ✓ Returns the approved address
+    setUpgradeContract()
+      ✓ Reverts if called by someone that is not the owner
+      ✓ Will setApprovalForAll for the upgradeContract addresses in the registrar and registry to true
+      ✓ Will setApprovalForAll for the old upgradeContract addresses in the registrar and registry to false
+      ✓ Will not setApprovalForAll for the new upgrade address if it is the address(0)
+    upgrade()
+      .eth
+        ✓ Upgrades a .eth name if sender is owner
+        ✓ Upgrades a .eth name if sender is authorised by the owner
+        ✓ Cannot upgrade a name if the upgradeContract has not been set.
+        ✓ Cannot upgrade a name if the upgradeContract has been set and then set back to the 0 address.
+        ✓ Will pass fuses and expiry to the upgradedContract without any changes.
+        ✓ Will burn the token, fuses and expiry of the name in the NameWrapper contract when upgraded.
+        ✓ will revert if called twice by the original owner
+        ✓ Will allow you to pass through extra data on upgrade
+        ✓ Does not allow anyone else to upgrade a name even if the owner has authorised the wrapper with the ENS registry.
+      other
+        ✓ Allows owner to upgrade name
+        ✓ upgrades a name if sender is authorized by the owner
+        ✓ Cannot upgrade a name if the upgradeContract has not been set.
+        ✓ Will pass fuses and expiry to the upgradedContract without any changes.
+        ✓ Will burn the token of the name in the NameWrapper contract when upgraded, but keep expiry and fuses
+        ✓ reverts if called twice by the original owner
+        ✓ Keep approval information on upgrade
+        ✓ Will allow you to pass through extra data on upgrade
+        ✓ Does not allow anyone else to upgrade a name even if the owner has authorised the wrapper with the ENS registry.
+    setFuses()
+      ✓ cannot burn PARENT_CANNOT_CONTROL
+      ✓ cannot burn any parent controlled fuse
+      ✓ Errors when manually changing calldata to incorrect type
+      ✓ cannot burn fuses as the previous owner of a .eth when the name has expired
+      ✓ cannot burn fuses as a previous owner of a non .eth when the name has expired
+      ✓ Will not allow burning fuses if PARENT_CANNOT_CONTROL has not been burned
+      ✓ Will not allow burning fuses of subdomains if CANNOT_UNWRAP has not been burned
+      ✓ Will not allow burning fuses of .eth names unless CANNOT_UNWRAP is also burned.
+      ✓ Can be called by the owner
+      ✓ Emits FusesSet event
+      ✓ Returns the correct fuses
+      ✓ Can be called by an account authorised by the owner
+      ✓ Cannot be called by an unauthorised account
+      ✓ Allows burning unknown fuses
+      ✓ Logically ORs passed in fuses with already-burned fuses.
+      ✓ can set fuses and then burn ability to burn fuses
+      ✓ can set fuses and burn transfer
+      ✓ can set fuses and burn canSetResolver and canSetTTL
+      ✓ can set fuses and burn canCreateSubdomains
+    extendExpiry()
+      ✓ Allows parent owner to set expiry without CAN_EXTEND_EXPIRY burned
+      ✓ Allows parent owner to set expiry with CAN_EXTEND_EXPIRY burned
+      ✓ Allows parent owner to set expiry with same child owner and CAN_EXTEND_EXPIRY burned
+      ✓ Allows approved operators of parent owner to set expiry without CAN_EXTEND_EXPIRY burned
+      ✓ Allows approved operators of parent owner to set expiry with CAN_EXTEND_EXPIRY burned
+      ✓ Does not allow child owner to set expiry without CAN_EXTEND_EXPIRY burned
+      ✓ Allows child owner to set expiry with CAN_EXTEND_EXPIRY burned
+      ✓ Does not allow approved operator of child owner to set expiry without CAN_EXTEND_EXPIRY burned
+      ✓ Allows approved operator of child owner to set expiry with CAN_EXTEND_EXPIRY burned
+      ✓ Does not allow accounts other than parent/child owners or approved operators to set expiry
+      ✓ Does not allow owner of .eth 2LD to set expiry
+      ✓ Allows parent owner of non-Emancipated name to set expiry
+      ✓ Allows child owner of non-Emancipated name to set expiry
+      ✓ Expiry is normalized to old expiry if too low
+      ✓ Expiry is normalized to parent expiry if too high
+      ✓ Expiry is not normalized to new value if between old expiry and parent expiry
+      ✓ Does not allow .eth 2LD owner to set expiry on child if the .eth 2LD is expired but grace period has not ended
+      ✓ Allows child owner to set expiry if parent .eth 2LD is expired but grace period has not ended
+      ✓ Does not allow child owner to set expiry if Emancipated child name has expired
+      ✓ Does not allow child owner to set expiry if non-Emancipated child name has reached its expiry
+      ✓ Does not allow parent owner to set expiry if Emancipated child name has expired
+      ✓ Allows parent owner to set expiry if non-Emancipated child name has reached its expiry
+      ✓ Does not allow extendExpiry() to be called on unregistered names (not registered ever)
+      ✓ Does not allow extendExpiry() to be called on unregistered names (expired w/ PCC burnt)
+      ✓ Allow extendExpiry() to be called on wrapped names
+      ✓ Does not allow extendExpiry() to be called on unwrapped names
+      ✓ Emits Expiry Extended event
+    setChildFuses()
+      ✓ Allows parent owners to set fuses/expiry
+      ✓ Emits a FusesSet event and ExpiryExtended event
+      ✓ Allows special cased TLD owners to set fuses/expiry
+      ✓ does not allow parent owners to burn IS_DOT_ETH fuse
+      ✓ Allow parent owners to burn parent controlled fuses without burning PCC
+      ✓ Does not allow parent owners to burn parent controlled fuses after burning PCC
+      ✓ Allows accounts authorised by the parent node owner to set fuses/expiry
+      ✓ Does not allow non-parent owners to set child fuses
+      ✓ Normalises expiry to the parent expiry
+      ✓ Normalises expiry to the old expiry
+      ✓ Does not allow burning fuses if PARENT_CANNOT_CONTROL is not burnt
+      ✓ should not allow .eth to call setChildFuses()
+      ✓ Does not allow burning fuses if CANNOT_UNWRAP is not burnt
+      ✓ Does not allow burning fuses if PARENT_CANNOT_CONTROL is already burned
+      ✓ Does not allow burning fuses if PARENT_CANNOT_CONTROL is already burned even if PARENT_CANNOT_CONTROL is added as a fuse
+      ✓ Does not allow burning PARENT_CANNOT_CONTROL if CU on the parent is not burned
+      ✓ Fuses and owner are set to 0 if expired
+      ✓ Fuses and owner are set to 0 if expired and fuses cannot be burnt after expiry using setChildFuses()
+    setSubnodeOwner()
+      ✓ Can be called by the owner of a name and sets this contract as owner on the ENS registry.
+      ✓ Can be called by an account authorised by the owner.
+      ✓ Transfers the wrapped token to the target address.
+      ✓ Will not allow wrapping with a target address of 0x0.
+      ✓ Will not allow wrapping with a target address of the wrapper contract address
+      ✓ Does not allow anyone else to wrap a name even if the owner has authorised the wrapper with the ENS registry.
+      ✓ Fuses cannot be burned if the name does not have PARENT_CANNOT_CONTROL burned
+      ✓ Does not allow fuses to be burned if CANNOT_UNWRAP is not burned.
+      ✓ Allows fuses to be burned if CANNOT_UNWRAP and PARENT_CANNOT_CONTROL is burned and is not expired
+      ✓ Does not allow IS_DOT_ETH to be burned
+      ✓ Does not allow fuses to be burned if CANNOT_UNWRAP and PARENT_CANNOT_CONTROL are burned, but the name is expired
+      ✓ normalises the max expiry of a subdomain to the parent's expiry
+      ✓ Emits Wrap event
+      ✓ Emits TransferSingle event
+      ✓ Will not create a subdomain with an empty label
+      ✓ should be able to call twice and change the owner
+      ✓ setting owner to 0 burns and unwraps
+      ✓ Unwrapping within an external contract does not create any state inconsistencies
+      ✓ Unwrapping a previously wrapped unexpired name retains PCC and so reverts setSubnodeRecord
+      ✓ Rewrapping a name that had PCC burned, but has now expired is possible and resets fuses
+      ✓ Expired subnames should still be protected by CANNOT_CREATE_SUBDOMAIN on the parent
+      ✓ Burning a name still protects it from the parent as long as it is unexpired and has PCC burnt
+    setSubnodeRecord()
+      ✓ Can be called by the owner of a name
+      ✓ Can be called by an account authorised by the owner.
+      ✓ Transfers the wrapped token to the target address.
+      ✓ Will not allow wrapping with a target address of 0x0
+      ✓ Will not allow wrapping with a target address of the wrapper contract address.
+      ✓ Does not allow anyone else to wrap a name even if the owner has authorised the wrapper with the ENS registry.
+      ✓ Does not allow fuses to be burned if PARENT_CANNOT_CONTROL is not burned.
+      ✓ Does not allow fuses to be burned if CANNOT_UNWRAP is not burned
+      ✓ Fuses will remain 0 if expired
+      ✓ Allows fuses to be burned if not expired and PARENT_CANNOT_CONTROL/CANNOT_UNWRAP are burned
+      ✓ does not allow burning IS_DOT_ETH
+      ✓ Emits Wrap event
+      ✓ Emits TransferSingle event
+      ✓ Sets the appropriate values on the ENS registry
+      ✓ Will not create a subdomain with an empty label
+      ✓ should be able to call twice and change the owner
+      ✓ setting owner to 0 burns and unwraps
+      ✓ Unwrapping within an external contract does not create any state inconsistencies
+      ✓ Unwrapping a previously wrapped unexpired name retains PCC and so reverts setSubnodeRecord
+      ✓ Rewrapping a name that had PCC burned, but has now expired is possible
+      ✓ Expired subnames should still be protected by CANNOT_CREATE_SUBDOMAIN on the parent
+      ✓ Burning a name still protects it from the parent as long as it is unexpired and has PCC burnt
+    setRecord()
+      ✓ Can be called by the owner
+      ✓ Performs the appropriate function on the ENS registry and Wrapper
+      ✓ Can be called by an account authorised by the owner.
+      ✓ Cannot be called by anyone else.
+      ✓ Cannot be called if CANNOT_TRANSFER is burned.
+      ✓ Cannot be called if CANNOT_SET_RESOLVER is burned.
+      ✓ Cannot be called if CANNOT_SET_TTL is burned.
+      ✓ Setting the owner to 0 reverts if CANNOT_UNWRAP is burned
+      ✓ Setting the owner of a subdomain to 0 unwraps the name and passes through resolver/ttl
+      ✓ Setting the owner to 0 on a .eth reverts
+    setResolver
+      ✓ Can be called by the owner
+      ✓ Performs the appropriate function on the ENS registry.
+      ✓ Can be called by an account authorised by the owner.
+      ✓ Cannot be called by anyone else.
+      ✓ Cannot be called if CANNOT_SET_RESOLVER is burned
+    setTTL
+      ✓ Can be called by the owner
+      ✓ Performs the appropriate function on the ENS registry.
+      ✓ Can be called by an account authorised by the owner.
+      ✓ Cannot be called by anyone else.
+      ✓ Cannot be called if CANNOT_SET_TTL is burned
+    onERC721Received
+      ✓ Wraps a name transferred to it and sets the owner to the provided address
+      ✓ Reverts if called by anything other than the ENS registrar address
+      ✓ Accepts fuse values from the data field
+      ✓ Allows specifiying resolver address
+      ✓ Reverts if transferred without data
+      ✓ Rejects transfers where the data field label does not match the tokenId
+      ✓ Reverts if CANNOT_UNWRAP is not burned and attempts to burn other fuses
+      ✓ Reverts when manually changing fuse calldata to incorrect type
+      ✓ Allows burning other fuses if CAN_UNWRAP has been burnt
+      ✓ Allows burning other fuses if CAN_UNWRAP has been burnt, but resets fuses if expired
+      ✓ Sets the controller in the ENS registry to the wrapper contract
+      ✓ Can wrap a name even if the controller address is different to the registrant address
+      ✓ emits NameWrapped Event
+      ✓ emits TransferSingle Event
+      ✓ will not wrap a name with an empty label
+    Transfer
+      ✓ safeTransfer cannot be called if CANNOT_TRANSFER is burned and is not expired
+      ✓ safeBatchTransfer cannot be called if CANNOT_TRANSFER is burned and is not expired
+    getData
+      ✓ returns the correct fuses and expiry
+      ✓ clears fuses when domain is expired
+    registerAndWrapETH2LD()
+      ✓ should register and wrap names
+      ✓ allows specifying a resolver address
+      ✓ does not allow non controllers to register names
+      ✓ Transfers the wrapped token to the target address.
+      ✓ Does not allow wrapping with a target address of 0x0
+      ✓ Does not allow wrapping with a target address of the wrapper contract address.
+      ✓ Does not allows fuse to be burned if CANNOT_UNWRAP has not been burned.
+      ✓ Allows fuse to be burned if CANNOT_UNWRAP has been burned and expiry set
+      ✓ automatically sets PARENT_CANNOT_CONTROL and IS_DOT_ETH
+      ✓ Errors when adding a number greater than uint16 for fuses
+      ✓ Errors when passing a parent-controlled fuse
+      ✓ Will not wrap a name with an empty label
+      ✓ Will not wrap a name with a label more than 255 characters
+      ✓ emits Wrap event
+      ✓ Emits TransferSingle event
+    renew()
+      ✓ Renews names
+      ✓ Renews names and can extend wrapper expiry
+      ✓ Renewing name less than required to unexpire it still has original owner/fuses
+    Controllable
+      ✓ allows the owner to add and remove controllers
+      ✓ does not allow non-owners to add or remove controllers
+    isWrapped(bytes32 node)
+      ✓ identifies a wrapped .eth name
+      ✓ identifies an expired .eth name as unwrapped
+      ✓ identifies an eth name registered on old controller as unwrapped
+      ✓ identifies an unregistered .eth name as unwrapped
+      ✓ identifies an unregistered tld as unwrapped
+      ✓ identifies a wrapped subname
+      ✓ identifies an expired wrapped subname with PCC burnt as unwrapped
+    isWrapped(bytes32 parentNode, bytes32 labelhash)
+      ✓ identifies a wrapped .eth name
+      ✓ identifies an expired .eth name as unwrapped
+      ✓ identifies an eth name registered on old controller as unwrapped
+      ✓ identifies an unregistered .eth name as unwrapped
+      ✓ identifies an unregistered tld as unwrapped
+      ✓ identifies a wrapped subname
+      ✓ identifies an expired wrapped subname with PCC burnt as unwrapped
+    MetadataService
+      ✓ uri() returns url
+      ✓ owner can set a new MetadataService
+      ✓ non-owner cannot set a new MetadataService
+    NameWrapper.names preimage dictionary
+      ✓ Does not allow manipulating the preimage db by manually setting owner as NameWrapper
+    Grace period tests
+      ✓ When a .eth name is in grace period it cannot call setSubnodeOwner
+      ✓ When a .eth name is in grace period it cannot call setSubnodeRecord
+      ✓ When a .eth name is in grace period it cannot call setRecord
+      ✓ When a .eth name is in grace period it cannot call safeTransferFrom
+      ✓ When a .eth name is in grace period it cannot call batchSafeTransferFrom
+      ✓ When a .eth name is in grace period it cannot call setResolver
+      ✓ When a .eth name is in grace period it cannot call setTTL
+      ✓ When a .eth name is in grace period it cannot call setFuses
+      ✓ When a .eth name is in grace period it cannot call setChildFuses
+      ✓ When a .eth name is in grace period, unexpired subdomains can call setFuses
+      ✓ When a .eth name is in grace period, unexpired subdomains can transfer
+      ✓ When a .eth name is in grace period, unexpired subdomains can set resolver
+      ✓ When a .eth name is in grace period, unexpired subdomains can set ttl
+      ✓ When a .eth name is in grace period, unexpired subdomains can call setRecord
+      ✓ When a .eth name is in grace period, unexpired subdomains can call setSubnodeOwner
+      ✓ When a .eth name is in grace period, unexpired subdomains can call setSubnodeRecord
+      ✓ When a .eth name is in grace period, unexpired subdomains can call setChildFuses if the subdomain exists
+    Registrar tests
+      ✓ Reverts when attempting to call token owner protected function on an unwrapped name
+    ERC1155 additional tests
+      ✓ Transferring a token that is not owned by the owner reverts
+      ✓ Approval on the Wrapper does not give permission to wrap the .eth name
+      ✓ Approval on the Wrapper does not give permission to wrap a non .eth name
+      ✓ When .eth name expires, it is untransferrable
+      ✓ Approval on the Wrapper does not give permission to transfer after expiry
+      ✓ When emancipated names expire, they are untransferrible
+      ✓ Returns a balance of 0 for expired names
+      ✓ Reregistering an expired name does not inherit its previous parent fuses
+    Implicit Unwrap tests
+      ✓ Trying to burn child fuses when re-registering a name on the old controller reverts
+      ✓ Renewing a wrapped, but expired name .eth in the wrapper, but unexpired on the registrar resyncs expiry
+    TLD recovery
+      ✓ Wraps a name which get stuck forever can be recovered by ROOT owner
+
+  TestUnwrap
+    wrapFromUpgrade()
+      .eth
+        ✓ allows unwrapping from an approved NameWrapper
+        ✓ does not allow unwrapping from an unapproved NameWrapper
+        ✓ does not allow unwrapping from an unapproved sender
+      other
+        ✓ allows unwrapping from an approved NameWrapper
+        ✓ does not allow unwrapping from an unapproved NameWrapper
+        ✓ does not allow unwrapping from an unapproved sender
+
+·-------------------------------------------------------------|---------------------------|--------------|-----------------------------·
+|                    [90mSolc version: 0.8.17[39m                     ·  [90mOptimizer enabled: true[39m  ·  [90mRuns: 1200[39m  ·  [90mBlock limit: 30000000 gas[39m  │
+······························································|···························|··············|······························
+|  [32m[1mMethods[22m[39m                                                                                                                             │
+································|·····························|·············|·············|··············|···············|··············
+|  [1mContract[22m                     ·  [1mMethod[22m                     ·  [32mMin[39m        ·  [32mMax[39m        ·  [32mAvg[39m         ·  [1m# calls[22m      ·  [1meur (avg)[22m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  addController              ·      [36m27390[39m  ·      [31m47290[39m  ·       45394  ·           [90m21[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  reclaim                    ·          -  ·          -  ·       62301  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  register                   ·      [36m86018[39m  ·     [31m131948[39m  ·      131064  ·          [90m432[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  registerOnly               ·          -  ·          -  ·       89205  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  renew                      ·      [36m41756[39m  ·      [31m41768[39m  ·       41760  ·            [90m3[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  safeTransferFrom           ·     [36m121689[39m  ·     [31m146666[39m  ·      124207  ·           [90m11[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  setApprovalForAll          ·      [36m24327[39m  ·      [31m46239[39m  ·       27480  ·          [90m225[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  setResolver                ·          -  ·          -  ·       57408  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mBaseRegistrarImplementation[39m  ·  transferFrom               ·      [36m40834[39m  ·      [31m62734[39m  ·       48134  ·            [90m3[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mDNSRegistrar[39m                 ·  proveAndClaim              ·     [36m198345[39m  ·     [31m309069[39m  ·      269939  ·            [90m7[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mDNSRegistrar[39m                 ·  proveAndClaimWithResolver  ·     [36m301699[39m  ·     [31m339634[39m  ·      320667  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mDNSSECImpl[39m                   ·  setAlgorithm               ·      [36m47648[39m  ·      [31m47672[39m  ·       47671  ·          [90m180[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mDNSSECImpl[39m                   ·  setDigest                  ·      [36m47715[39m  ·      [31m47727[39m  ·       47726  ·           [90m90[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistry[39m                  ·  setApprovalForAll          ·          -  ·          -  ·       46124  ·           [90m57[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistry[39m                  ·  setOwner                   ·      [36m24065[39m  ·      [31m29105[39m  ·       28532  ·           [90m52[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistry[39m                  ·  setResolver                ·      [36m47666[39m  ·      [31m48266[39m  ·       48262  ·          [90m187[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistry[39m                  ·  setSubnodeOwner            ·      [36m27254[39m  ·      [31m49394[39m  ·       49070  ·          [90m775[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistry[39m                  ·  setSubnodeRecord           ·          -  ·          -  ·       73829  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistry[39m                  ·  setTTL                     ·      [36m47603[39m  ·      [31m47987[39m  ·       47795  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistryWithFallback[39m      ·  setApprovalForAll          ·          -  ·          -  ·       46118  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistryWithFallback[39m      ·  setOwner                   ·          -  ·          -  ·       31051  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistryWithFallback[39m      ·  setRecord                  ·          -  ·          -  ·       55453  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mENSRegistryWithFallback[39m      ·  setSubnodeRecord           ·          -  ·          -  ·       75659  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mERC20Recoverable[39m             ·  recoverFunds               ·          -  ·          -  ·       35346  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mETHRegistrarController[39m       ·  commit                     ·      [36m44194[39m  ·      [31m44206[39m  ·       44205  ·           [90m21[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mETHRegistrarController[39m       ·  register                   ·     [36m229160[39m  ·     [31m380442[39m  ·      287712  ·           [90m16[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mETHRegistrarController[39m       ·  renew                      ·      [36m71043[39m  ·      [31m79547[39m  ·       76712  ·            [90m3[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mETHRegistrarController[39m       ·  withdraw                   ·          -  ·          -  ·       23598  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mFIFSRegistrar[39m                ·  register                   ·      [36m40605[39m  ·      [31m57689[39m  ·       53418  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mMockERC20[39m                    ·  transfer                   ·          -  ·          -  ·       51378  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  approve                    ·      [36m32850[39m  ·      [31m52219[39m  ·       49448  ·           [90m28[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  extendExpiry               ·      [36m39324[39m  ·      [31m47054[39m  ·       42645  ·           [90m19[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  registerAndWrapETH2LD      ·      [36m92045[39m  ·     [31m198983[39m  ·      170569  ·           [90m15[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  renew                      ·      [36m48115[39m  ·      [31m59236[39m  ·       56452  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  safeBatchTransferFrom      ·      [36m50182[39m  ·      [31m60132[39m  ·       57003  ·           [90m27[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  safeTransferFrom           ·      [36m34817[39m  ·      [31m44189[39m  ·       40666  ·           [90m25[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setApprovalForAll          ·      [36m24276[39m  ·      [31m46188[39m  ·       43513  ·           [90m38[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setChildFuses              ·      [36m36431[39m  ·      [31m43109[39m  ·       39971  ·           [90m33[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setController              ·      [36m25992[39m  ·      [31m47904[39m  ·       35193  ·           [90m13[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setFuses                   ·      [36m27495[39m  ·      [31m32701[39m  ·       30280  ·           [90m28[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setMetadataService         ·          -  ·          -  ·       29051  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setRecord                  ·      [36m65892[39m  ·      [31m71451[39m  ·       69528  ·            [90m6[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setResolver                ·      [36m54603[39m  ·      [31m56997[39m  ·       55255  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setSubnodeOwner            ·      [36m52691[39m  ·     [31m119051[39m  ·      112333  ·          [90m248[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setSubnodeRecord           ·      [36m61064[39m  ·     [31m145508[39m  ·      101445  ·           [90m35[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setTTL                     ·      [36m54285[39m  ·      [31m56667[39m  ·       54928  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  setUpgradeContract         ·      [36m39960[39m  ·     [31m101489[39m  ·       96701  ·           [90m28[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  unwrap                     ·      [36m39409[39m  ·      [31m46197[39m  ·       44126  ·           [90m27[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  unwrapETH2LD               ·      [36m82865[39m  ·      [31m89665[39m  ·       85176  ·            [90m9[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  upgrade                    ·      [36m51826[39m  ·     [31m112948[39m  ·       61224  ·           [90m24[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  wrap                       ·      [36m54311[39m  ·     [31m114773[39m  ·       81594  ·           [90m33[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mNameWrapper[39m                  ·  wrapETH2LD                 ·      [36m85071[39m  ·     [31m164148[39m  ·      131360  ·          [90m406[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mOwnedResolver[39m                ·  setAddr                    ·          -  ·          -  ·       53772  ·            [90m7[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  approve                    ·      [36m27271[39m  ·      [31m47183[39m  ·       43860  ·            [90m6[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  clearRecords               ·          -  ·          -  ·       51679  ·           [90m10[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  multicall                  ·          -  ·          -  ·       93094  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setABI                     ·      [36m32875[39m  ·      [31m54965[39m  ·       51283  ·            [90m6[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setAddr                    ·      [36m56182[39m  ·      [31m57698[39m  ·       56940  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setAddr                    ·      [36m38610[39m  ·      [31m63734[39m  ·       57352  ·           [90m53[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setApprovalForAll          ·      [36m26277[39m  ·      [31m46189[39m  ·       43697  ·            [90m8[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setContenthash             ·      [36m40662[39m  ·      [31m77517[39m  ·       66987  ·            [90m7[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setDNSRecords              ·      [36m41805[39m  ·     [31m317527[39m  ·      158024  ·            [90m7[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setInterface               ·          -  ·          -  ·       54742  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setName                    ·      [36m38223[39m  ·      [31m55359[39m  ·       54784  ·           [90m30[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setPubkey                  ·      [36m36495[39m  ·      [31m76295[39m  ·       67045  ·            [90m8[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setText                    ·      [36m37933[39m  ·      [31m57845[39m  ·       56592  ·           [90m34[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mPublicResolver[39m               ·  setZonehash                ·      [36m37734[39m  ·      [31m78940[39m  ·       63901  ·           [90m10[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mReverseRegistrar[39m             ·  claim                      ·      [36m60960[39m  ·      [31m82633[39m  ·       61768  ·           [90m54[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mReverseRegistrar[39m             ·  claimForAddr               ·      [36m41968[39m  ·      [31m86751[39m  ·       74994  ·            [90m5[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mReverseRegistrar[39m             ·  claimWithResolver          ·          -  ·          -  ·       80940  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mReverseRegistrar[39m             ·  setController              ·          -  ·          -  ·       47858  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mReverseRegistrar[39m             ·  setDefaultResolver         ·      [36m47233[39m  ·      [31m47245[39m  ·       47244  ·          [90m122[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mReverseRegistrar[39m             ·  setName                    ·          -  ·          -  ·      113901  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mReverseRegistrar[39m             ·  setNameForAddr             ·      [36m82415[39m  ·     [31m118522[39m  ·      108496  ·            [90m5[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mRoot[39m                         ·  lock                       ·          -  ·          -  ·       47324  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mRoot[39m                         ·  setController              ·      [36m47801[39m  ·      [31m47813[39m  ·       47812  ·           [90m43[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mRoot[39m                         ·  setSubnodeOwner            ·      [36m41538[39m  ·      [31m58638[39m  ·       50088  ·            [90m2[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mSimplePublicSuffixList[39m       ·  addPublicSuffixes          ·      [36m47573[39m  ·      [31m71045[39m  ·       69239  ·           [90m26[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mStaticBulkRenewal[39m            ·  renewAll                   ·          -  ·          -  ·      138600  ·            [90m1[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mTestRegistrar[39m                ·  register                   ·      [36m40243[39m  ·      [31m74443[39m  ·       65893  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [90mTestUnwrap[39m                   ·  setWrapperApproval         ·          -  ·          -  ·       46377  ·            [90m4[39m  ·          [32m[90m-[32m[39m  │
+································|·····························|·············|·············|··············|···············|··············
+|  [32m[1mDeployments[22m[39m                                                ·                                          ·  [1m% of limit[22m   ·             │
+······························································|·············|·············|··············|···············|··············
+|  BaseRegistrarImplementation                                ·          -  ·          -  ·     1922501  ·        [90m6.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  BulkRenewal                                                ·          -  ·          -  ·      484269  ·        [90m1.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  contracts/wrapper/test/TestBytesUtils.sol:TestBytesUtils   ·          -  ·          -  ·      262238  ·        [90m0.9 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DNSRegistrar                                               ·    [36m1956874[39m  ·    [31m1957126[39m  ·     1957013  ·        [90m6.5 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DNSSECImpl                                                 ·    [36m1832329[39m  ·    [31m2126723[39m  ·     1983991  ·        [90m6.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyAlgorithm                                             ·          -  ·          -  ·      134191  ·        [90m0.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyDigest                                                ·          -  ·          -  ·      123853  ·        [90m0.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyExtendedDNSSECResolver                                ·          -  ·          -  ·      217994  ·        [90m0.7 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyLegacyTextResolver                                    ·          -  ·          -  ·      179917  ·        [90m0.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyNameWrapper                                           ·          -  ·          -  ·       92319  ·        [90m0.3 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyNonCCIPAwareResolver                                  ·          -  ·          -  ·      324026  ·        [90m1.1 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyOffchainResolver                                      ·          -  ·          -  ·      416892  ·        [90m1.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyOldResolver                                           ·          -  ·          -  ·      136289  ·        [90m0.5 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyOracle                                                ·          -  ·          -  ·      113997  ·        [90m0.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyParser                                                ·          -  ·          -  ·      445999  ·        [90m1.5 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  DummyRevertResolver                                        ·          -  ·          -  ·      186907  ·        [90m0.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  EllipticCurve                                              ·          -  ·          -  ·       67066  ·        [90m0.2 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ENSRegistry                                                ·          -  ·          -  ·      643479  ·        [90m2.1 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ENSRegistryWithFallback                                    ·     [36m784969[39m  ·     [31m784981[39m  ·      784979  ·        [90m2.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ERC1155ReceiverMock                                        ·     [36m432466[39m  ·     [31m432490[39m  ·      432481  ·        [90m1.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ERC20Recoverable                                           ·          -  ·          -  ·      269153  ·        [90m0.9 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ETHRegistrarController                                     ·    [36m1787735[39m  ·    [31m1787963[39m  ·     1787872  ·          [90m6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ExponentialPremiumPriceOracle                              ·          -  ·          -  ·      814412  ·        [90m2.7 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ExtendedDNSResolver                                        ·          -  ·          -  ·      422616  ·        [90m1.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  FIFSRegistrar                                              ·          -  ·          -  ·      231512  ·        [90m0.8 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  LegacyResolver                                             ·          -  ·          -  ·       92319  ·        [90m0.3 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  LinearPremiumPriceOracle                                   ·          -  ·          -  ·      737734  ·        [90m2.5 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  MockERC20                                                  ·          -  ·          -  ·      685065  ·        [90m2.3 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  MockReverseClaimerImplementer                              ·          -  ·          -  ·      118427  ·        [90m0.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  NameGriefer                                                ·          -  ·          -  ·      664016  ·        [90m2.2 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  NameWrapper                                                ·    [36m5485493[39m  ·    [31m5507166[39m  ·     5505170  ·       [90m18.4 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  OffchainDNSResolver                                        ·    [36m1767138[39m  ·    [31m1767150[39m  ·     1767149  ·        [90m5.9 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  OwnedResolver                                              ·          -  ·          -  ·     2349096  ·        [90m7.8 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  P256SHA256Algorithm                                        ·          -  ·          -  ·      895974  ·          [90m3 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  PublicResolver                                             ·    [36m2762382[39m  ·    [31m2763102[39m  ·     2762922  ·        [90m9.2 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  ReverseRegistrar                                           ·     [36m818045[39m  ·     [31m877621[39m  ·      821581  ·        [90m2.7 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  Root                                                       ·     [36m506677[39m  ·     [31m506689[39m  ·      506688  ·        [90m1.7 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  RSASHA1Algorithm                                           ·          -  ·          -  ·      695004  ·        [90m2.3 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  RSASHA256Algorithm                                         ·          -  ·          -  ·      448849  ·        [90m1.5 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  SHA1Digest                                                 ·          -  ·          -  ·      459326  ·        [90m1.5 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  SHA256Digest                                               ·          -  ·          -  ·      211262  ·        [90m0.7 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  SimplePublicSuffixList                                     ·          -  ·          -  ·      350117  ·        [90m1.2 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  StablePriceOracle                                          ·     [36m543416[39m  ·     [31m543476[39m  ·      543428  ·        [90m1.8 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  StaticBulkRenewal                                          ·          -  ·          -  ·      396754  ·        [90m1.3 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  StaticMetadataService                                      ·          -  ·          -  ·      188851  ·        [90m0.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  test/dnssec-oracle/TestBytesUtils.sol:TestBytesUtils       ·          -  ·          -  ·     2254390  ·        [90m7.5 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  TestHexUtils                                               ·          -  ·          -  ·      270873  ·        [90m0.9 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  TestNameEncoder                                            ·          -  ·          -  ·      305511  ·          [90m1 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  TestNameWrapperReentrancy                                  ·          -  ·          -  ·      470349  ·        [90m1.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  TestRegistrar                                              ·          -  ·          -  ·      225498  ·        [90m0.8 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  TestRRUtils                                                ·          -  ·          -  ·     1902077  ·        [90m6.3 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  TestUnwrap                                                 ·          -  ·          -  ·      970373  ·        [90m3.2 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  TLDPublicSuffixList                                        ·          -  ·          -  ·      166633  ·        [90m0.6 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  UniversalResolver                                          ·    [36m3281935[39m  ·    [31m3281947[39m  ·     3281947  ·       [90m10.9 %[39m  ·          [32m[90m-[32m[39m  │
+······························································|·············|·············|··············|···············|··············
+|  UpgradedNameWrapperMock                                    ·          -  ·          -  ·      574925  ·        [90m1.9 %[39m  ·          [32m[90m-[32m[39m  │
+·-------------------------------------------------------------|-------------|-------------|--------------|---------------|-------------·
+
+  895 passing (3m)
+  3 failing
+
+  1) Contract: BulkRenewal
+       should return the cost of a bulk renewal:
+     Error: Transaction reverted: function returned an unexpected amount of data
+      at BulkRenewal.rentPrice (contracts/ethregistrar/BulkRenewal.sol:41)
+      at TruffleContract.rentPrice (node_modules/@nomiclabs/truffle-contract/lib/execute.js:140:26)
+      at Context.<anonymous> (test/ethregistrar/TestBulkRenewal.js:118:25)
+      at processImmediate (node:internal/timers:464:21)
+
+  2) Contract: BulkRenewal
+       should permit bulk renewal of names:
+     Error: Transaction reverted: function returned an unexpected amount of data
+      at BulkRenewal.renewAll (contracts/ethregistrar/BulkRenewal.sol:60)
+      at TruffleContract.renewAll (node_modules/@nomiclabs/truffle-contract/lib/execute.js:189:26)
+      at Context.<anonymous> (test/ethregistrar/TestBulkRenewal.js:129:34)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+  3) HexUtils
+       hexStringToBytes32()
+         Correctly parses all hex characters:
+     Error: call revert exception; VM Exception while processing transaction: reverted with reason string "Invalid string length" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method="hexStringToBytes32(bytes,uint256,uint256)", data="0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000015496e76616c696420737472696e67206c656e6774680000000000000000000000", errorArgs=["Invalid string length"], errorName="Error", errorSignature="Error(string)", reason="Invalid string length", code=CALL_EXCEPTION, version=abi/5.7.0)
+      at Logger.makeError (node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
+      at Logger.throwError (node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
+      at Interface.decodeFunctionResult (node_modules/@ethersproject/abi/src.ts/interface.ts:427:23)
+      at Contract.<anonymous> (node_modules/@ethersproject/contracts/src.ts/index.ts:400:44)
+      at step (node_modules/@ethersproject/contracts/lib/index.js:48:23)
+      at Object.next (node_modules/@ethersproject/contracts/lib/index.js:29:53)
+      at fulfilled (node_modules/@ethersproject/contracts/lib/index.js:20:58)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+      at runNextTicks (node:internal/process/task_queues:65:3)
+      at listOnTimeout (node:internal/timers:526:9)
+      at processTimers (node:internal/timers:500:7)
+
+
+
+error Command failed with exit code 3.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

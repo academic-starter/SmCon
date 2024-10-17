@@ -1,0 +1,52 @@
+{
+    "createGame@maxgame": [
+        "games_dealerChoice == 0",
+        "games_result one of [0]",
+        "games_player == 0",
+        "games_playerValue one of [0]",
+        "games_playerValue == 0",
+        "games_dealerHash != \"\"",
+        "games_playerChoice == 0",
+        "games_playerChoice one of [0]",
+        "games_result == 0",
+        "games_dealer != 0",
+        "games_dealerChoice one of [0]",
+        "games_expireTime > 0"
+    ],
+    "joinGame@gameid": [
+        "games_dealerChoice == 0",
+        "games_playerChoice > 0",
+        "games_playerChoice one of [10,20,30]",
+        "games_result one of [0]",
+        "games_player != 0",
+        "games_dealerHash != \"\"",
+        "games_result == 0",
+        "games_dealer != 0",
+        "games_dealerChoice one of [0]",
+        "games_expireTime > 0"
+    ],
+    "reveal@gameid": [
+        "games_playerChoice > 0",
+        "games_dealerChoice > 0",
+        "games_dealerValue > 0",
+        "games_playerChoice one of [10,20,30]",
+        "games_result one of [201,101,102]",
+        "games_result > 0",
+        "games_player != 0",
+        "games_dealerChoice one of [10,20,30]",
+        "games_playerValue > 0",
+        "games_dealerHash != \"\"",
+        "games_dealer != 0",
+        "games_expireTime > 0"
+    ],
+    "close@gameid": [
+        "games_dealerChoice == 0",
+        "games_playerChoice one of [0,10,20,30]",
+        "games_dealerHash != \"\"",
+        "games_result > 0",
+        "games_result one of [101,102]",
+        "games_dealer != 0",
+        "games_dealerChoice one of [0]",
+        "games_expireTime > 0"
+    ]
+}

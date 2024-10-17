@@ -1,0 +1,36 @@
+{
+    "issue@owner": [
+        "balances_uint256 > 0",
+        "allowed_sum2_uint256 one of [0]",
+        "allowed_sum2_uint256 == 0",
+        "allowed_sum1_uint256 == 0",
+        "balances_uint256 one of [109970000000,30108983000000]",
+        "allowed_sum1_uint256 one of [0]"
+    ],
+    "transfer@msg.sender": [
+        "allowed_sum1_uint256 one of [0]",
+        "allowed_sum2_uint256 one of [0,100000000]",
+        "allowed_sum1_uint256 == 0"
+    ],
+    "transfer@_to": [
+        "allowed_sum1_uint256 one of [0]",
+        "allowed_sum2_uint256 one of [0,200000,50000000,119418732,924643969031894959928830500,115792089237316195423570985008687907853269984665640564039457584007913129639935]",
+        "allowed_sum1_uint256 == 0"
+    ],
+    "transferFrom@_from": [
+        "allowed_sum1_uint256 one of [0]",
+        "balances_uint256 one of [297000000,0,98000000,93000000,1600000000,1000000000,119418732,120196500,831]",
+        "allowed_sum1_uint256 == 0"
+    ],
+    "approve@msg.sender": [
+        "allowed_sum1_uint256 one of [0]",
+        "allowed_sum1_uint256 == 0"
+    ],
+    "approve@_spender": [
+        "balances_uint256 one of [0,5000000,18500000,3000000,100,2368500000]",
+        "allowed_sum2_uint256 one of [0]",
+        "allowed_sum2_uint256 == 0",
+        "allowed_sum1_uint256 == 0",
+        "allowed_sum1_uint256 one of [0]"
+    ]
+}

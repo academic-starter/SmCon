@@ -1,0 +1,17 @@
+digraph "./InvConPlus/Dapp-Automata-data/result/model/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb/CryptoPunksMarket/FSM-0" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	1 [label=1 shape=circle]
+	0 [label=0 shape=circle]
+	"" -> 0 [label=""]
+	0 -> 1 [label=setInitialOwners]
+	0 -> 1 [label=getPunk]
+	1 -> 1 [label=transferPunk]
+	1 -> 1 [label=punkNoLongerForSale]
+	1 -> 1 [label=offerPunkForSale]
+	1 -> 1 [label=offerPunkForSaleToAddress]
+	1 -> 1 [label=buyPunk]
+	1 -> 1 [label=enterBidForPunk]
+	1 -> 1 [label=acceptBidForPunk]
+	1 -> 1 [label=withdrawBidForPunk]
+}

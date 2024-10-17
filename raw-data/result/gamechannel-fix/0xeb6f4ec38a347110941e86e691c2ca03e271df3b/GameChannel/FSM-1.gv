@@ -1,0 +1,17 @@
+digraph "Dapp-Automata-data/result/gamechannel-fix/0xeb6f4ec38a347110941e86e691c2ca03e271df3b/GameChannel/FSM-1" {
+	graph [rankdir=LR]
+	"" [label="" shape=plaintext]
+	2 [label=2 shape=circle]
+	0 [label=0 shape=circle]
+	1 [label=1 shape=circle]
+	"" -> 0 [label=""]
+	0 -> 2 [label=createGame]
+	2 -> 2 [label=serverEndGame]
+	2 -> 2 [label=userCancelActiveGame]
+	2 -> 1 [label=userCancelActiveGame]
+	2 -> 2 [label=serverCancelActiveGame]
+	2 -> 1 [label=serverForceGameEnd]
+	2 -> 2 [label=userEndGameConflict]
+	2 -> 1 [label=userEndGameConflict]
+	2 -> 2 [label=serverEndGameConflict]
+}

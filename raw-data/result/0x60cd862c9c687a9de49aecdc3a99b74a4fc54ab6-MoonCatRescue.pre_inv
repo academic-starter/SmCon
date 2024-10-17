@@ -1,0 +1,84 @@
+{
+    "rescueCat@rescueOrder[ori(rescueIndex)]": [
+        "adoptionOffers_catId == \"\"",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_seller == 0",
+        "catNames_bytes32 == \"\"",
+        "catOwners_address == 0"
+    ],
+    "nameCat@catId": [
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionOffers_seller == 0",
+        "catNames_bytes32 == \"\""
+    ],
+    "makeAdoptionOffer@catId": [
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_requester == 0"
+    ],
+    "cancelAdoptionOffer@catId": [
+        "adoptionOffers_price > 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionOffers_seller != 0",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_catId != \"\"",
+        "catNames_bytes32 == \"\"",
+        "catOwners_address == 0"
+    ],
+    "acceptAdoptionOffer@catId": [
+        "adoptionRequests_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_requester == 0",
+        "catOwners_address == 0"
+    ],
+    "giveCat@catId": [
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionRequests_requester == 0"
+    ],
+    "makeAdoptionRequest@catId": [
+        "adoptionOffers_catId == \"\"",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionOffers_seller == 0"
+    ],
+    "acceptAdoptionRequest@catId": [
+        "adoptionOffers_catId == \"\"",
+        "adoptionRequests_requester != 0",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price > 0",
+        "adoptionRequests_catId != \"\"",
+        "adoptionOffers_seller == 0",
+        "catOwners_address == 0"
+    ],
+    "cancelAdoptionRequest@catId": [
+        "adoptionOffers_catId == \"\"",
+        "adoptionRequests_requester != 0",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price > 0",
+        "adoptionRequests_catId != \"\"",
+        "adoptionOffers_seller == 0",
+        "catNames_bytes32 == \"\""
+    ],
+    "addGenesisCatGroup@rescueOrder[ori(rescueIndex)]": [
+        "adoptionOffers_catId == \"\"",
+        "adoptionOffers_price == 0",
+        "adoptionOffers_onlyOfferTo == 0",
+        "adoptionRequests_price == 0",
+        "adoptionRequests_catId == \"\"",
+        "adoptionRequests_requester == 0",
+        "adoptionOffers_seller == 0",
+        "catNames_bytes32 == \"\"",
+        "catOwners_address == 0"
+    ]
+}

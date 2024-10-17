@@ -1,0 +1,39 @@
+{
+    "createAuction@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_endingPrice one of [0]",
+        "nftToTokenIdToAuction_startingPrice == 0",
+        "nftToTokenIdToAuction_duration == 0",
+        "nftToTokenIdToAuction_duration one of [0]",
+        "nftToTokenIdToAuction_startingPrice one of [0]",
+        "nftToTokenIdToAuction_startedAt == 0",
+        "nftToTokenIdToAuction_startedAt one of [0]",
+        "nftToTokenIdToAuction_nftAddress == 0",
+        "nftToTokenIdToAuction_seller == 0",
+        "nftToTokenIdToAuction_endingPrice == 0"
+    ],
+    "bid@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_seller != 0",
+        "nftToTokenIdToAuction_endingPrice > 0",
+        "nftToTokenIdToAuction_startingPrice > 0",
+        "nftToTokenIdToAuction_endingPrice one of [10000000000000000,50000000000000000,30000000000000000,100000000000000000]",
+        "nftToTokenIdToAuction_startedAt > 0",
+        "nftToTokenIdToAuction_startedAt one of [1516656344,1516656058,1516695987,1516738936]",
+        "nftToTokenIdToAuction_duration one of [86400]",
+        "nftToTokenIdToAuction_startingPrice one of [20000000000000000,100000000000000000,50000000000000000]",
+        "nftToTokenIdToAuction_duration > 0",
+        "nftToTokenIdToAuction_duration == 86400",
+        "nftToTokenIdToAuction_nftAddress != 0"
+    ],
+    "cancelAuction@_nftAddress@_tokenId": [
+        "nftToTokenIdToAuction_seller != 0",
+        "nftToTokenIdToAuction_endingPrice > 0",
+        "nftToTokenIdToAuction_startingPrice > 0",
+        "nftToTokenIdToAuction_startingPrice one of [200000000000000000,1290000000000000000,300000000000000000,7000000000000000000,600000000000000000,2700000000000000000]",
+        "nftToTokenIdToAuction_duration one of [86400,43200]",
+        "nftToTokenIdToAuction_startedAt > 0",
+        "nftToTokenIdToAuction_startedAt one of [1516731108,1516738027,1516607088,1516738544,1516671634,1516734423]",
+        "nftToTokenIdToAuction_duration > 0",
+        "nftToTokenIdToAuction_endingPrice one of [300000000000000000,900000000000000000,200000000000000000,2000000000000000000,12000000000000000000]",
+        "nftToTokenIdToAuction_nftAddress != 0"
+    ]
+}
